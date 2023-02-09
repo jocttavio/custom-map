@@ -8,7 +8,7 @@ if(!connection){
     password: 'psswd',
     host: 'localhost',
     port: '5433',
-    database: 'db_ppreparatory'
+    database: 'db_ppreparatoy'
   })
 }
 
