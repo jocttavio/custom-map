@@ -140,7 +140,7 @@ export default function GeneralMap({ TypeMap }) {
             "latitud": "",
             "longitud": "",
         }]);
-        setType_Map('Atractivos');
+        setType_Map('Atracciones');
         setOptions(AttractionOptions);
     };
 
@@ -207,7 +207,7 @@ export default function GeneralMap({ TypeMap }) {
             setOptions(DisabilityOptions);
             setType_Map(TypeMap);
 
-        } else if (TypeMap === 'Atractivos') {
+        } else if (TypeMap === 'Atracciones') {
 
             const newArray = [...ArrayButton];
             newArray[0] = false;

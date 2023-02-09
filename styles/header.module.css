@@ -1,3 +1,23 @@
+.ButtonOption{
+  @apply px-3 py-2 cursor-pointer rounded-xl font-bold text-lg text-black;
+}
+
+.ButtonOption:hover{
+  @apply bg-[#E4DCAB] text-[#e93f7d];
+}
+
+.MenuDiv{
+  @apply flex relative xl:flex-row lg:flex-row md:flex-row sm:flex-col flex-col items-center xl:justify-end lg:justify-end md:justify-end sm:justify-center justify-center xl:w-9/12 lg:w-8/12 md:w-7/12 sm:w-2/12 w-2/12 h-full;
+}
+
+.MenuDiv:hover .OptionMenu{
+  @apply flex; 
+}
+
+.OptionMenu{
+  @apply xl:flex lg:flex md:flex sm:hidden hidden items-center xl:relative lg:relative md:relative sm:absolute absolute xl:flex-row lg:flex-row md:flex-row sm:flex-col flex-col xl:top-0 lg:top-0 md:top-0 sm:top-[100%] top-[100%] right-0 xl:bg-transparent lg:bg-transparent md:bg-transparent sm:bg-[#E4DCAB] bg-[#E4DCAB] rounded-2xl z-[4000];
+}
+
 .header_initial {
   background: white;
   width: 100%;
