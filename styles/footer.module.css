@@ -1,0 +1,7 @@
+.ButtonOption{
+    @apply px-3 py-1 cursor-pointer rounded-xl font-semibold;
+}
+  
+.ButtonOption:hover{
+    @apply text-[#e93f7d] ;
+}
