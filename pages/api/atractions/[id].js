@@ -33,9 +33,9 @@ const getAtrac = async (query, res) => {
 const updateAtrac = async (query, res, body) => {
   try {
     const {
-      latitud_a,
-      longitud_a,
-      nombre_a,
+      latitude_a,
+      longitude_a,
+      name_a,
       description_a,
       direction_a,
       pageweb_a,
@@ -45,9 +45,9 @@ const updateAtrac = async (query, res, body) => {
       "UPDATE Tabla_UbicacionesAtrac SET Latitud_Atrac  = $1, Longitud_Atrac = $2, Nombre_Atrac = $3, Descripcion_Atrac = $4, Direccion_Atrac = $5, PaginaWeb_Atrac = $6, Imagen_Atrac = $7  WHERE ID_AtracUbicacion = $8 RETURNING *";
 
     const values = [
-      latitud_a,
-      longitud_a,
-      nombre_a,
+      latitude_a,
+      longitude_a,
+      name_a,
       description_a,
       direction_a,
       pageweb_a,

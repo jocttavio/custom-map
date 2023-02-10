@@ -33,9 +33,9 @@ const getRestaurant = async (query, res) => {
 const updateRestaurant = async (query, res, body) => {
   try {
     const {
-      latitud_r,
-      longitud_r,
-      nombre_r,
+      latitude_r,
+      longitude_r,
+      name_r,
       description_r,
       direction_r,
       pageweb_r,
@@ -45,9 +45,9 @@ const updateRestaurant = async (query, res, body) => {
       "UPDATE Tabla_UbicacionesRest SET Latitud_Rest  = $1, Longitud_Rest = $2, Nombre_Rest = $3, Descripcion_Rest = $4, Direccion_Rest = $5, PaginaWeb_Rest = $6, Imagen_Rest = $7  WHERE ID_RestUbicacion = $8 RETURNING *";
 
     const values = [
-      latitud_r,
-      longitud_r,
-      nombre_r,
+      latitude_r,
+      longitude_r,
+      name_r,
       description_r,
       direction_r,
       pageweb_r,

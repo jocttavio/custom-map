@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Index from "..";
 import Link from "next/link";
 import Map from "../../../components/MyMap";
+
 import {
   Button,
   CircularProgress,
@@ -11,39 +12,39 @@ import {
 import { useRouter } from "next/router";
 
 const newUI = () => {
-  const [hotel, setHotel] = useState({
-    id_hotel: "",
-    latitude_h: "",
-    longitude_h: "",
-    name_h: "",
-    description_h: "",
-    direction_h: "",
-    pageweb_h: "",
-    img_h: "",
+  const [atraction, setAtracc] = useState({
+    id_atrac: "",
+    latitude_a: "",
+    longitude_a: "",
+    name_a: "",
+    description_a: "",
+    direction_a: "",
+    pageweb_a: "",
+    img_a: "",
   });
   const router = useRouter();
 
   const handlerChange = ({ target: { name, value } }) => {
-    setHotel({ ...hotel, [name]: value });
+    setAtracc({ ...atraction, [name]: value });
   };
 
-  const createHotel = async (hotel) => {
-    await fetch("http://localhost:3000/api/hotels", {
+  const createHotel = async (atraction) => {
+    await fetch("http://localhost:3000/api/atractions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(hotel),
+      body: JSON.stringify(atraction),
     });
   };
 
-  const updateHotel = async (id, hotel) => {
-    await fetch("http://localhost:3000/api/hotels/" + id, {
+  const updateHotel = async (id, atraction) => {
+    await fetch("http://localhost:3000/api/atractions/" + id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(hotel),
+      body: JSON.stringify(atraction),
     });
   };
 
@@ -51,76 +52,76 @@ const newUI = () => {
     try {
       e.preventDefault();
       if (router.query.id) {
-        await updateHotel(router.query.id, hotel);
+        await updateHotel(router.query.id, atraction);
       } else {
-        await createHotel(hotel);
+        await createHotel(atraction);
       }
-      router.push("/crud/hotel");
+      router.push("/crud/atractions");
     } catch (error) {
       console.log(error);
     }
   };
 
   const loadHotel = async (id) => {
-    const response = await fetch("http://localhost:3000/api/hotels/" + id);
-    const hotel = await response.json();
-    setHotel({
-      id_hotel: hotel.id_hotelubicacion,
-      latitude_h: hotel.latitud_hotel,
-      longitude_h: hotel.longitud_hotel,
-      name_h: hotel.nombre_hotel,
-      description_h: hotel.descripcion_hotel,
-      direction_h: hotel.direccion_hotel,
-      pageweb_h: hotel.paginaweb_hotel,
-      img_h: hotel.imagen_hotel,
+    const response = await fetch("http://localhost:3000/api/atractions/" + id);
+    const atraction = await response.json();
+    setAtracc({
+      id_atrac: atraction.id_atracubicacion,
+      latitude_a: atraction.latitud_atrac,
+      longitude_a: atraction.longitud_atrac,
+      name_a: atraction.nombre_atrac,
+      description_a: atraction.descripcion_atrac,
+      direction_a: atraction.direccion_atrac,
+      pageweb_a: atraction.paginaweb_atrac,
+      img_a: atraction.imagen_atrac,
     });
   };
   useEffect(() => {
     if (router.query.id) loadHotel(router.query.id);
   }, [router.query]);
-  // Inputs
+
   const textField = [
     {
       title: "Latitud de la Ubicacion",
-      name: "latitude_h",
+      name: "latitude_a",
       label: "Latitud",
-      value: hotel.latitude_h,
+      value: atraction.latitude_a,
     },
     {
       title: "Longitud de la Ubicacion",
-      name: "longitude_h",
+      name: "longitude_a",
       label: "Longitud",
-      value: hotel.longitude_h,
+      value: atraction.longitude_a,
     },
     {
-      title: "Nombre del hotel",
-      name: "name_h",
+      title: "Nombre de la Atracción",
+      name: "name_a",
       label: "Nombre",
-      value: hotel.name_h,
+      value: atraction.name_a,
     },
     {
-      title: "Descipcion del Hotel",
-      name: "description_h",
+      title: "Descipcion del Atraccion",
+      name: "description_a",
       label: "Descripcion",
-      value: hotel.description_h,
+      value: atraction.description_a,
     },
     {
-      title: "Direccion del Hotel",
-      name: "direction_h",
+      title: "Direccion del Atraccion",
+      name: "direction_a",
       label: "Direccion",
-      value: hotel.direction_h,
+      value: atraction.direction_a,
     },
     {
-      title: "Pagina Web del Hotel",
-      name: "pageweb_h",
+      title: "Pagina Web del Atraccion",
+      name: "pageweb_a",
       label: "Web",
-      value: hotel.pageweb_h,
+      value: atraction.pageweb_a,
     },
     {
-      title: "Imagen del Hotel",
-      name: "img_h",
+      title: "Imagen del Atraccion",
+      name: "img_a",
       label: "Image",
-      value: hotel.img_h,
+      value: atraction.img_a,
     },
   ];
 
@@ -129,18 +130,18 @@ const newUI = () => {
       <div className="flex flex-col justify-center pt-32 px-20 items-center">
         <div className="flex justify-start w-full">
           <Link
-            href={"/crud/hotel"}
+            href={"/crud/atractions"}
             className="text-lg font-semibold p-4 bg-red-400 rounded-xl"
           >
             Cancel
           </Link>
         </div>
-        <div className="grid ">
+        <div className="grid">
           <div>
             <form className="form-info" onSubmit={handleSubmit}>
               <div className="w-96">
                 {textField.map((field) => (
-                  <div className="information-hotel">
+                  <div className="information-atraction">
                     <p>{field.title}</p>
                     <TextField
                       onChange={handlerChange}
@@ -162,21 +163,21 @@ const newUI = () => {
                   size="medium"
                   type="submit"
                   disabled={
-                    !hotel.latitude_h ||
-                    !hotel.longitude_h ||
-                    !hotel.name_h ||
-                    !hotel.description_h ||
-                    !hotel.img_h
+                    !atraction.latitude_a ||
+                    !atraction.longitude_a ||
+                    !atraction.name_a ||
+                    !atraction.description_a ||
+                    !atraction.img_a
                   }
                 >
-                  {hotel.id_hotel ? "Actualizar" : "Agregar"}
+                  {atraction.id_atrac ? "Actualizar" : "Agregar"}
                 </Button>
               </div>
             </form>
           </div>
         </div>
         <style jsx>{`
-          .information-hotel {
+          .information-atraction {
             width: 100%;
           }
         `}</style>

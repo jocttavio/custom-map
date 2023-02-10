@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Index from "..";
 import Link from "next/link";
 import Map from "../../../components/MyMap";
+
 import {
   Button,
   CircularProgress,
@@ -10,40 +11,41 @@ import {
 } from "@mui/material";
 import { useRouter } from "next/router";
 
-const newUI = () => {
-  const [hotel, setHotel] = useState({
-    id_hotel: "",
-    latitude_h: "",
-    longitude_h: "",
-    name_h: "",
-    description_h: "",
-    direction_h: "",
-    pageweb_h: "",
-    img_h: "",
+const newRest = () => {
+  const [restaurant, setRestaurant] = useState({
+    id_restaurant: "",
+    latitude_r: "",
+    longitude_r: "",
+    name_r: "",
+    description_r: "",
+    direction_r: "",
+    pageweb_r: "",
+    img_r: "",
   });
   const router = useRouter();
 
   const handlerChange = ({ target: { name, value } }) => {
-    setHotel({ ...hotel, [name]: value });
+    setRestaurant({ ...restaurant, [name]: value });
+    console.log(restaurant);
   };
 
-  const createHotel = async (hotel) => {
-    await fetch("http://localhost:3000/api/hotels", {
+  const createRest = async (restaurant) => {
+    await fetch("http://localhost:3000/api/restaurant", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(hotel),
+      body: JSON.stringify(restaurant),
     });
   };
 
-  const updateHotel = async (id, hotel) => {
-    await fetch("http://localhost:3000/api/hotels/" + id, {
+  const updateRest = async (id, restaurant) => {
+    await fetch("http://localhost:3000/api/restaurant/" + id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(hotel),
+      body: JSON.stringify(restaurant),
     });
   };
 
@@ -51,76 +53,76 @@ const newUI = () => {
     try {
       e.preventDefault();
       if (router.query.id) {
-        await updateHotel(router.query.id, hotel);
+        await updateRest(router.query.id, restaurant);
       } else {
-        await createHotel(hotel);
+        await createRest(restaurant);
       }
-      router.push("/crud/hotel");
+      router.push("/crud/restaurant");
     } catch (error) {
       console.log(error);
     }
   };
 
-  const loadHotel = async (id) => {
-    const response = await fetch("http://localhost:3000/api/hotels/" + id);
-    const hotel = await response.json();
-    setHotel({
-      id_hotel: hotel.id_hotelubicacion,
-      latitude_h: hotel.latitud_hotel,
-      longitude_h: hotel.longitud_hotel,
-      name_h: hotel.nombre_hotel,
-      description_h: hotel.descripcion_hotel,
-      direction_h: hotel.direccion_hotel,
-      pageweb_h: hotel.paginaweb_hotel,
-      img_h: hotel.imagen_hotel,
+  const loadRest = async (id) => {
+    const response = await fetch("http://localhost:3000/api/restaurant/" + id);
+    const restaurant = await response.json( );
+    setRestaurant({
+      id_restaurant: restaurant.id_restubicacion,
+        latitude_r: restaurant.latitud_rest,
+      longitude_r: restaurant.longitud_rest,
+      name_r: restaurant.nombre_rest,
+      description_r: restaurant.descripcion_rest,
+      direction_r: restaurant.direccion_rest,
+      pageweb_r: restaurant.paginaweb_rest,
+      img_r: restaurant.imagen_rest,
     });
   };
   useEffect(() => {
-    if (router.query.id) loadHotel(router.query.id);
+    if (router.query.id) loadRest(router.query.id);
   }, [router.query]);
-  // Inputs
+
   const textField = [
     {
       title: "Latitud de la Ubicacion",
-      name: "latitude_h",
+      name: "latitude_r",
       label: "Latitud",
-      value: hotel.latitude_h,
+      value: restaurant.latitude_r,
     },
     {
       title: "Longitud de la Ubicacion",
-      name: "longitude_h",
+      name: "longitude_r",
       label: "Longitud",
-      value: hotel.longitude_h,
+      value: restaurant.longitude_r,
     },
     {
-      title: "Nombre del hotel",
-      name: "name_h",
+      title: "Nombre del Restaurante",
+      name: "name_r",
       label: "Nombre",
-      value: hotel.name_h,
+      value: restaurant.name_r,
     },
     {
-      title: "Descipcion del Hotel",
-      name: "description_h",
+      title: "Descipcion del Restaurant",
+      name: "description_r",
       label: "Descripcion",
-      value: hotel.description_h,
+      value: restaurant.description_r,
     },
     {
-      title: "Direccion del Hotel",
-      name: "direction_h",
+      title: "Direccion del Restaurant",
+      name: "direction_r",
       label: "Direccion",
-      value: hotel.direction_h,
+      value: restaurant.direction_r,
     },
     {
-      title: "Pagina Web del Hotel",
-      name: "pageweb_h",
+      title: "Pagina Web del Restaurant",
+      name: "pageweb_r",
       label: "Web",
-      value: hotel.pageweb_h,
+      value: restaurant.pageweb_r,
     },
     {
-      title: "Imagen del Hotel",
-      name: "img_h",
+      title: "Imagen del Restaurant",
+      name: "img_r",
       label: "Image",
-      value: hotel.img_h,
+      value: restaurant.img_r,
     },
   ];
 
@@ -129,18 +131,18 @@ const newUI = () => {
       <div className="flex flex-col justify-center pt-32 px-20 items-center">
         <div className="flex justify-start w-full">
           <Link
-            href={"/crud/hotel"}
+            href={"/crud/restaurant"}
             className="text-lg font-semibold p-4 bg-red-400 rounded-xl"
           >
-            Cancel
+         Cancel
           </Link>
         </div>
-        <div className="grid ">
+        <div className="grid">
           <div>
             <form className="form-info" onSubmit={handleSubmit}>
               <div className="w-96">
                 {textField.map((field) => (
-                  <div className="information-hotel">
+                  <div className="information-restaurant">
                     <p>{field.title}</p>
                     <TextField
                       onChange={handlerChange}
@@ -162,21 +164,22 @@ const newUI = () => {
                   size="medium"
                   type="submit"
                   disabled={
-                    !hotel.latitude_h ||
-                    !hotel.longitude_h ||
-                    !hotel.name_h ||
-                    !hotel.description_h ||
-                    !hotel.img_h
+                    !restaurant.latitude_r ||
+                    !restaurant.longitude_r ||
+                    !restaurant.name_r ||
+                    !restaurant.description_r ||
+                    !restaurant.img_r
                   }
                 >
-                  {hotel.id_hotel ? "Actualizar" : "Agregar"}
+                  {restaurant.id_restaurant ? "Actualizar" : "Agregar"}
                 </Button>
               </div>
             </form>
           </div>
+      
         </div>
         <style jsx>{`
-          .information-hotel {
+          .information-restaurant {
             width: 100%;
           }
         `}</style>
@@ -185,4 +188,4 @@ const newUI = () => {
   );
 };
 
-export default newUI;
+export default newRest;
