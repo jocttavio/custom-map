@@ -6,7 +6,7 @@ function Footer() {
     <footer className="flex flex-col w-full">
       <div className="flex flex-row justify-center items-center xl:h-24 h-28 bg-[#3f3e3e] text-[#CCCCCC]">
        
-        <div className="flex flex-row justify-center gap-x-3 items-center w-7/12">
+        <div className="flex flex-row justify-center items-center w-7/12">
           <Image src="/logo.jpeg"
             alt="Picture of the author"
             width={150}

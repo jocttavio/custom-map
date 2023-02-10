@@ -18,6 +18,23 @@
   @apply xl:flex lg:flex md:flex sm:hidden hidden items-center xl:relative lg:relative md:relative sm:absolute absolute xl:flex-row lg:flex-row md:flex-row sm:flex-col flex-col xl:top-0 lg:top-0 md:top-0 sm:top-[100%] top-[100%] right-0 xl:bg-transparent lg:bg-transparent md:bg-transparent sm:bg-[#E4DCAB] bg-[#E4DCAB] rounded-2xl z-[4000];
 }
 
+.inputRounded {
+  padding: 7px 20px;
+  border: none;
+  border-radius: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  font-size: 16px;
+  color: #333;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.inputRounded:hover{
+  box-shadow: 0 5px 6px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+}
+
 .header_initial {
   background: white;
   width: 100%;

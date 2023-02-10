@@ -228,9 +228,9 @@ export default function GeneralMap({ TypeMap }) {
 
     return (
         <div className='relative w-full h-[100vh]'>
-            <div className='absolute top-2 left-14 flex xl:flex-row lg:flex-row md:flex-row sm:flex-col flex-col xl:justify-start justify-center items-center gap-x-4 gap-y-2 z-[1200] xl:w-[750px] lg:w-[725] md:w-[710px] sm:w-[580px] w-[300px] xl:h-20 lg:h-24 md:h-28 sm:h-32 h-40 bg-[#E4DCAB] rounded-lg'>
+            <div className='absolute top-2 left-14 flex xl:flex-row lg:flex-row md:flex-row sm:flex-row flex-col xl:justify-start justify-center items-center gap-x-4 gap-y-2 z-[1200]  bg-[#E4DCAB] rounded-lg p-3'>
                 <div className='flex justify-center items-center'>
-                    <div className='ml-4 w-[240px]'>
+                    <div className='xl:w-[240px] lg:w-[240px] md:w-[240px] sm:w-[220px] w-[220px]'>
                         <Autocomplete
                             options={Options}
                             id="auto-complete"
@@ -251,7 +251,7 @@ export default function GeneralMap({ TypeMap }) {
                     </div>
                 </div>
 
-                <div className='flex flex-wrap flex-row justify-center items-center gap-y-3 gap-x-4'>
+                <div className='flex flex-wrap flex-row justify-center items-center gap-y-3 gap-x-4 xl:w-[470px] lg:w-[450px] md:w-[370px] sm:w-[240px] w-[270px]'>
                     <Button variant="contained"  size='small' disabled={ArrayButton[0]} onClick={HotelsMap} endIcon={<HotelIcon />}>
                         Hoteles
                     </Button>

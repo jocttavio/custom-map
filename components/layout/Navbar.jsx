@@ -43,8 +43,8 @@ const Navbar = () => {
 
       <div className="flex flex-row items-center h-[65px] w-full bg-[#f45690]">
         <div className="flex justify-start items-center xl:w-3/12 lg:w-4/12 md:w-5/12 sm:w-10/12 w-10/12 h-full ml-2">
-          <TextField id="outlined-basic" size="small" label="Buscador" variant="outlined" />
-          <IconButton variant="contained" size='small' >
+          <input type="text" className={classes.inputRounded} placeholder="Buscador"/>
+          <IconButton variant="contained" size='small' color="inherit">
             <SearchIcon />
           </IconButton>
         </div>
