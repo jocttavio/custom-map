@@ -1,0 +1,191 @@
+import React, { useState, useEffect } from "react";
+import Index from "..";
+import Link from "next/link";
+import Map from "../../../components/MyMap";
+
+import {
+  Button,
+  CircularProgress,
+  TextField,
+  Autocomplete,
+} from "@mui/material";
+import { useRouter } from "next/router";
+
+const newRest = () => {
+  const [restaurant, setRestaurant] = useState({
+    id_restaurant: "",
+    latitude_r: "",
+    longitude_r: "",
+    name_r: "",
+    description_r: "",
+    direction_r: "",
+    pageweb_r: "",
+    img_r: "",
+  });
+  const router = useRouter();
+
+  const handlerChange = ({ target: { name, value } }) => {
+    setRestaurant({ ...restaurant, [name]: value });
+    console.log(restaurant);
+  };
+
+  const createRest = async (restaurant) => {
+    await fetch("http://localhost:3000/api/restaurant", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(restaurant),
+    });
+  };
+
+  const updateRest = async (id, restaurant) => {
+    await fetch("http://localhost:3000/api/restaurant/" + id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(restaurant),
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      if (router.query.id) {
+        await updateRest(router.query.id, restaurant);
+      } else {
+        await createRest(restaurant);
+      }
+      router.push("/crud/restaurant");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const loadRest = async (id) => {
+    const response = await fetch("http://localhost:3000/api/restaurant/" + id);
+    const restaurant = await response.json( );
+    setRestaurant({
+      id_restaurant: restaurant.id_restubicacion,
+        latitude_r: restaurant.latitud_rest,
+      longitude_r: restaurant.longitud_rest,
+      name_r: restaurant.nombre_rest,
+      description_r: restaurant.descripcion_rest,
+      direction_r: restaurant.direccion_rest,
+      pageweb_r: restaurant.paginaweb_rest,
+      img_r: restaurant.imagen_rest,
+    });
+  };
+  useEffect(() => {
+    if (router.query.id) loadRest(router.query.id);
+  }, [router.query]);
+
+  const textField = [
+    {
+      title: "Latitud de la Ubicacion",
+      name: "latitude_r",
+      label: "Latitud",
+      value: restaurant.latitude_r,
+    },
+    {
+      title: "Longitud de la Ubicacion",
+      name: "longitude_r",
+      label: "Longitud",
+      value: restaurant.longitude_r,
+    },
+    {
+      title: "Nombre del Restaurante",
+      name: "name_r",
+      label: "Nombre",
+      value: restaurant.name_r,
+    },
+    {
+      title: "Descipcion del Restaurant",
+      name: "description_r",
+      label: "Descripcion",
+      value: restaurant.description_r,
+    },
+    {
+      title: "Direccion del Restaurant",
+      name: "direction_r",
+      label: "Direccion",
+      value: restaurant.direction_r,
+    },
+    {
+      title: "Pagina Web del Restaurant",
+      name: "pageweb_r",
+      label: "Web",
+      value: restaurant.pageweb_r,
+    },
+    {
+      title: "Imagen del Restaurant",
+      name: "img_r",
+      label: "Image",
+      value: restaurant.img_r,
+    },
+  ];
+
+  return (
+    <Index>
+      <div className="flex flex-col justify-center pt-32 px-20 items-center">
+        <div className="flex justify-start w-full">
+          <Link
+            href={"/crud/restaurant"}
+            className="text-lg font-semibold p-4 bg-red-400 rounded-xl"
+          >
+         Cancel
+          </Link>
+        </div>
+        <div className="grid">
+          <div>
+            <form className="form-info" onSubmit={handleSubmit}>
+              <div className="w-96">
+                {textField.map((field) => (
+                  <div className="information-restaurant">
+                    <p>{field.title}</p>
+                    <TextField
+                      onChange={handlerChange}
+                      name={field.name}
+                      fullWidth
+                      id="standard-basic"
+                      label={field.label}
+                      size="small"
+                      variant="standard"
+                      value={field.value}
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className=" flex justify-center items-center mt-4">
+                <Button
+                  className="bg-green-500"
+                  variant="contained"
+                  size="medium"
+                  type="submit"
+                  disabled={
+                    !restaurant.latitude_r ||
+                    !restaurant.longitude_r ||
+                    !restaurant.name_r ||
+                    !restaurant.description_r ||
+                    !restaurant.img_r
+                  }
+                >
+                  {restaurant.id_restaurant ? "Actualizar" : "Agregar"}
+                </Button>
+              </div>
+            </form>
+          </div>
+      
+        </div>
+        <style jsx>{`
+          .information-restaurant {
+            width: 100%;
+          }
+        `}</style>
+      </div>
+    </Index>
+  );
+};
+
+export default newRest;

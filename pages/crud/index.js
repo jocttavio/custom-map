@@ -6,7 +6,9 @@ import { motion, AnimatePresence } from "framer-motion";
 const Index = ({ children }) => {
   const links = [
     { href: "/crud", text: "Home" },
-    { href: "/crud/newUI", text: "Insert" }
+    { href: "/crud/hotel", text: "Hoteles" },
+    { href: "/crud/restaurant", text: "Restaurantes" },
+    { href: "/crud/atractions", text: "Atracciones" },
   ];
   const path = usePathname();
   return (
@@ -38,7 +40,17 @@ const Index = ({ children }) => {
           exit={{ opacity: 0, y: 25 }}
           transition={{ delay: 0.25, duration: 0.9 }}
         >
-          {children}
+          {path === "/crud" ? (
+            <div className="p-40">
+              {" "}
+              <h1 className="text-center">
+                Bienvenidos al CRUD de I EXPERIENCE
+              </h1>
+            </div>
+          ) : (
+            children
+        
+          )}
         </motion.div>
       </AnimatePresence>
     </div>
