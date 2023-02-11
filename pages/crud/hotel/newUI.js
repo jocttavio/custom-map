@@ -1,17 +1,23 @@
 import React, { useState, useEffect } from "react";
 import Index from "..";
 import Link from "next/link";
-import Map from "../../../components/MyMap";
+import Map from '../../../components/MyMiniMap'
+
 import {
   Button,
   CircularProgress,
   TextField,
   Autocomplete,
 } from "@mui/material";
+
 import { useRouter } from "next/router";
 
 const newUI = () => {
+
+  const Options = ['Discapacidad motora', 'Discapacidad visual', 'Discapacidad auditiva', ''];
+
   const [hotel, setHotel] = useState({
+    fk_discapacidad_h: 3,
     id_hotel: "",
     latitude_h: "",
     longitude_h: "",
@@ -54,8 +60,8 @@ const newUI = () => {
         await updateHotel(router.query.id, hotel);
       } else {
         await createHotel(hotel);
+        router.push("/crud/hotel");
       }
-      router.push("/crud/hotel");
     } catch (error) {
       console.log(error);
     }
@@ -65,19 +71,22 @@ const newUI = () => {
     const response = await fetch("http://localhost:3000/api/hotels/" + id);
     const hotel = await response.json();
     setHotel({
-      id_hotel: hotel.id_hotelubicacion,
-      latitude_h: hotel.latitud_hotel,
-      longitude_h: hotel.longitud_hotel,
-      name_h: hotel.nombre_hotel,
-      description_h: hotel.descripcion_hotel,
-      direction_h: hotel.direccion_hotel,
-      pageweb_h: hotel.paginaweb_hotel,
-      img_h: hotel.imagen_hotel,
+      fk_discapacidad_h: hotel.fk_discapacidadhotel,
+      id_hotel: hotel.id_ubicacionhotel,
+      latitude_h: hotel.latitud_ubicacion,
+      longitude_h: hotel.longitud_ubicacion,
+      name_h: hotel.nombre_ubicacion,
+      description_h: hotel.descripcion_ubicacion,
+      direction_h: hotel.direccion_ubicacion,
+      pageweb_h: hotel.paginaweb_ubicacion,
+      img_h: hotel.imagen_ubicacion,
     });
   };
+
   useEffect(() => {
     if (router.query.id) loadHotel(router.query.id);
   }, [router.query]);
+
   // Inputs
   const textField = [
     {
@@ -135,12 +144,13 @@ const newUI = () => {
             Cancel
           </Link>
         </div>
-        <div className="grid ">
+        <div className="flex gap-x-7 items-center justify-center">
           <div>
+
             <form className="form-info" onSubmit={handleSubmit}>
               <div className="w-96">
-                {textField.map((field) => (
-                  <div className="information-hotel">
+                {textField.map((field,index) => (
+                  <div className="information-hotel" key={index}>
                     <p>{field.title}</p>
                     <TextField
                       onChange={handlerChange}
@@ -154,6 +164,20 @@ const newUI = () => {
                     />
                   </div>
                 ))}
+              </div>
+              <div className='w-96'>
+                <Autocomplete
+                  options={Options}
+                  value={hotel.fk_discapacidad_h === null ? Options[3] : Options[hotel.fk_discapacidad_h]}
+                  onChange={(event, newValue) => { setHotel({ ...hotel, fk_discapacidad_h: Options.indexOf(newValue) }) }}
+                  id="auto-complete"
+                  autoComplete
+                  autoSelect
+                  includeInputInList
+                  renderInput={(params) => (
+                    <TextField {...params} label="Tipo de discapacidad" variant="standard" />
+                  )}
+                />
               </div>
               <div className=" flex justify-center items-center mt-4">
                 <Button
@@ -173,7 +197,21 @@ const newUI = () => {
                 </Button>
               </div>
             </form>
+
           </div>
+
+          <div>
+            {router.query.id && (
+              <Map locations={
+                [{
+                  latitude_h: hotel.latitude_h,
+                  longitude_h: hotel.longitude_h,
+                }]
+              } TypeMap={1}
+                TypeIcon={0} />
+            )}
+          </div>
+
         </div>
         <style jsx>{`
           .information-hotel {

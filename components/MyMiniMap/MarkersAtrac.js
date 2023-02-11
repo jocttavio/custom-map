@@ -1,5 +1,6 @@
 import { Marker, Popup, useMapEvents } from 'react-leaflet'
-export default function MyMarkers({ locations, MarkerIcon }) {
+
+export default function MarkersAtrac({ locations, MarkerIcon }){
     const map = useMapEvents({})
 
     return (
@@ -9,7 +10,7 @@ export default function MyMarkers({ locations, MarkerIcon }) {
                     {
                         locations.map((info, index) => {
                             return (
-                                <Marker key={index} position={{ lat: info.latitud_ubicacion , lng: info.longitud_ubicacion }} icon={MarkerIcon} eventHandlers={{
+                                <Marker key={index} position={{ lat: info.latitude_a, lng: info.longitude_a }} icon={MarkerIcon} eventHandlers={{
                                     click: (e) => {
                                         map.locate()
                                         map.flyTo([(e.latlng.lat + 0.0009).toString(), e.latlng.lng.toString()], 18)

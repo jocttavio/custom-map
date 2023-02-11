@@ -13,10 +13,11 @@ export default async function handler(req, res) {
       return res.status(400).json("method no allowed");
   }
 }
+
 const getRestaurant = async (query, res) => {
   try {
     const text =
-      "SELECT * FROM Tabla_UbicacionesRest WHERE ID_RestUbicacion = $1";
+      "SELECT * FROM Tabla_UbicacionesRest WHERE ID_UbicacionRest = $1";
     const value = [query.id];
     const result = await connection.query(text, value);
 
@@ -33,6 +34,7 @@ const getRestaurant = async (query, res) => {
 const updateRestaurant = async (query, res, body) => {
   try {
     const {
+      fk_discapacidad_r,
       latitude_r,
       longitude_r,
       name_r,
@@ -41,10 +43,12 @@ const updateRestaurant = async (query, res, body) => {
       pageweb_r,
       img_r,
     } = body;
+    
     const text =
-      "UPDATE Tabla_UbicacionesRest SET Latitud_Rest  = $1, Longitud_Rest = $2, Nombre_Rest = $3, Descripcion_Rest = $4, Direccion_Rest = $5, PaginaWeb_Rest = $6, Imagen_Rest = $7  WHERE ID_RestUbicacion = $8 RETURNING *";
+      "UPDATE Tabla_UbicacionesRest SET FK_DiscapacidadRest = $1, Latitud_Ubicacion  = $2, Longitud_Ubicacion = $3, Nombre_Ubicacion = $4, Descripcion_Ubicacion = $5, Direccion_Ubicacion = $6, PaginaWeb_Ubicacion = $7, Imagen_Ubicacion = $8  WHERE ID_UbicacionRest = $9 RETURNING *";
 
     const values = [
+      fk_discapacidad_r,
       latitude_r,
       longitude_r,
       name_r,
@@ -67,7 +71,7 @@ const updateRestaurant = async (query, res, body) => {
 const deleteRestaurant = async (query, res) => {
   try {
     const text =
-      "DELETE FROM Tabla_UbicacionesRest WHERE ID_RestUbicacion = $1 RETURNING *";
+      "DELETE FROM Tabla_UbicacionesRest WHERE ID_UbicacionRest = $1 RETURNING *";
     const values = [query.id];
     const result = await connection.query(text, values);
     if (result.rows.length === 0)

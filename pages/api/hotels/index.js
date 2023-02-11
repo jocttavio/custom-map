@@ -23,6 +23,7 @@ const getHotels = async (req, res) => {
 const saveHotel = async (body, res) => {
   try {
     const {
+      fk_discapacidad_h,
       latitude_h,
       longitude_h,
       name_h,
@@ -32,9 +33,10 @@ const saveHotel = async (body, res) => {
       img_h,
     } = body;
     const query =
-      "INSERT INTO  Tabla_UbicacionesHotel(Latitud_Hotel, Longitud_Hotel,Nombre_Hotel, Descripcion_Hotel, Direccion_Hotel, PaginaWeb_Hotel, Imagen_Hotel ) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *";
+      "INSERT INTO  Tabla_UbicacionesHotel(FK_DiscapacidadHotel, Latitud_Ubicacion, Longitud_Ubicacion,Nombre_Ubicacion, Descripcion_Ubicacion, Direccion_Ubicacion, PaginaWeb_Ubicacion, Imagen_Ubicacion ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *";
 
     const values = [
+      fk_discapacidad_h,
       latitude_h,
       longitude_h,
       name_h,

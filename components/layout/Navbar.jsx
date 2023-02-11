@@ -1,6 +1,4 @@
-import { useState, useEffect } from "react";
 import classes from "../../styles/header.module.css";
-import TextField from '@mui/material/TextField';
 import SearchIcon from '@mui/icons-material/Search';
 import { IconButton } from '@mui/material'
 import { useRouter } from 'next/router';

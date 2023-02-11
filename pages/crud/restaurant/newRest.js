@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Index from "..";
 import Link from "next/link";
-import Map from "../../../components/MyMap";
+import Map from '../../../components/MyMiniMap'
 
 import {
   Button,
@@ -9,10 +9,14 @@ import {
   TextField,
   Autocomplete,
 } from "@mui/material";
+
 import { useRouter } from "next/router";
 
 const newRest = () => {
+  const Options = ['Discapacidad motora', 'Discapacidad visual', 'Discapacidad auditiva',''];
+
   const [restaurant, setRestaurant] = useState({
+    fk_discapacidad_r: 3,
     id_restaurant: "",
     latitude_r: "",
     longitude_r: "",
@@ -26,7 +30,6 @@ const newRest = () => {
 
   const handlerChange = ({ target: { name, value } }) => {
     setRestaurant({ ...restaurant, [name]: value });
-    console.log(restaurant);
   };
 
   const createRest = async (restaurant) => {
@@ -56,8 +59,8 @@ const newRest = () => {
         await updateRest(router.query.id, restaurant);
       } else {
         await createRest(restaurant);
+        router.push("/crud/restaurant");
       }
-      router.push("/crud/restaurant");
     } catch (error) {
       console.log(error);
     }
@@ -67,16 +70,18 @@ const newRest = () => {
     const response = await fetch("http://localhost:3000/api/restaurant/" + id);
     const restaurant = await response.json( );
     setRestaurant({
-      id_restaurant: restaurant.id_restubicacion,
-        latitude_r: restaurant.latitud_rest,
-      longitude_r: restaurant.longitud_rest,
-      name_r: restaurant.nombre_rest,
-      description_r: restaurant.descripcion_rest,
-      direction_r: restaurant.direccion_rest,
-      pageweb_r: restaurant.paginaweb_rest,
-      img_r: restaurant.imagen_rest,
+      fk_discapacidad_r: restaurant.fk_discapacidadrest,
+      id_restaurant: restaurant.id_ubicacionrest,
+      latitude_r: restaurant.latitud_ubicacion,
+      longitude_r: restaurant.longitud_ubicacion,
+      name_r: restaurant.nombre_ubicacion,
+      description_r: restaurant.descripcion_ubicacion,
+      direction_r: restaurant.direccion_ubicacion,
+      pageweb_r: restaurant.paginaweb_ubicacion,
+      img_r: restaurant.imagen_ubicacion,
     });
   };
+  
   useEffect(() => {
     if (router.query.id) loadRest(router.query.id);
   }, [router.query]);
@@ -137,12 +142,12 @@ const newRest = () => {
          Cancel
           </Link>
         </div>
-        <div className="grid">
+        <div className="flex gap-x-7 items-center justify-center">
           <div>
             <form className="form-info" onSubmit={handleSubmit}>
               <div className="w-96">
-                {textField.map((field) => (
-                  <div className="information-restaurant">
+                {textField.map((field, index) => (
+                  <div className="information-restaurant" key={index}>
                     <p>{field.title}</p>
                     <TextField
                       onChange={handlerChange}
@@ -156,6 +161,20 @@ const newRest = () => {
                     />
                   </div>
                 ))}
+              </div>
+              <div className='w-96'>
+                <Autocomplete
+                  options={Options}
+                  value={restaurant.fk_discapacidad_r === null ? Options[3] : Options[restaurant.fk_discapacidad_r]}
+                  onChange={(event, newValue) => { setRestaurant({ ...restaurant, fk_discapacidad_r: Options.indexOf(newValue) }) }}
+                  id="auto-complete"
+                  autoComplete
+                  autoSelect
+                  includeInputInList
+                  renderInput={(params) => (
+                    <TextField {...params} label="Tipo de discapacidad" variant="standard" />
+                  )}
+                />
               </div>
               <div className=" flex justify-center items-center mt-4">
                 <Button
@@ -177,6 +196,18 @@ const newRest = () => {
             </form>
           </div>
       
+          <div>
+            {router.query.id && (
+              <Map locations={
+                [{
+                  latitude_r: restaurant.latitude_r,
+                  longitude_r: restaurant.longitude_r,
+                }]
+              } TypeMap={2}
+                TypeIcon={0} />
+            )}
+          </div>
+
         </div>
         <style jsx>{`
           .information-restaurant {

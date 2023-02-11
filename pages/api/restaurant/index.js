@@ -4,12 +4,12 @@ export default async function handler(req, res) {
   const { method, body } = req;
   switch (method) {
     case "GET":
-      return await getHotels(req, res);
+      return await getRestaurant(req, res);
     case "POST":
-      return await saveHotel(body, res);
+      return await saveRestaurant(body, res);
   }
 }
-const getHotels = async (req, res) => {
+const getRestaurant = async (req, res) => {
   try {
     const result = await connection.query(
       "SELECT * FROM Tabla_UbicacionesRest"
@@ -21,9 +21,10 @@ const getHotels = async (req, res) => {
   }
 };
 
-const saveHotel = async (body, res) => {
+const saveRestaurant = async (body, res) => {
   try {
     const {
+      fk_discapacidad_r,
       latitude_r,
       longitude_r,
       name_r,
@@ -33,9 +34,10 @@ const saveHotel = async (body, res) => {
       img_r,
     } = body;
     const query =
-      "INSERT INTO  Tabla_UbicacionesRest(Latitud_Rest, Longitud_Rest,Nombre_Rest, Descripcion_Rest, Direccion_Rest, PaginaWeb_Rest, Imagen_Rest ) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *";
+      "INSERT INTO  Tabla_UbicacionesRest(FK_DiscapacidadRest, Latitud_Ubicacion, Longitud_Ubicacion,Nombre_Ubicacion, Descripcion_Ubicacion, Direccion_Ubicacion, PaginaWeb_Ubicacion, Imagen_Ubicacion ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *";
 
     const values = [
+      fk_discapacidad_r,
       latitude_r,
       longitude_r,
       name_r,

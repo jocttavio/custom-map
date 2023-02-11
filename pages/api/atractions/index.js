@@ -24,6 +24,7 @@ const getAtraccs = async (req, res) => {
 const saveAtrac = async (body, res) => {
   try {
     const {
+      fk_atraccion_a,
       latitude_a,
       longitude_a,
       name_a,
@@ -33,9 +34,10 @@ const saveAtrac = async (body, res) => {
       img_a,
     } = body;
     const query =
-      "INSERT INTO  Tabla_UbicacionesAtrac(Latitud_Atrac, Longitud_Atrac,Nombre_Atrac, Descripcion_Atrac, Direccion_Atrac, PaginaWeb_Atrac, Imagen_Atrac ) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *";
+      "INSERT INTO  Tabla_UbicacionesAtrac(FK_AtraccionAtrac, Latitud_Ubicacion, Longitud_Ubicacion,Nombre_Ubicacion, Descripcion_Ubicacion, Direccion_Ubicacion, PaginaWeb_Ubicacion, Imagen_Ubicacion ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *";
 
     const values = [
+      fk_atraccion_a,
       latitude_a,
       longitude_a,
       name_a,

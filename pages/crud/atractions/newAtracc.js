@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Index from "..";
 import Link from "next/link";
-import Map from "../../../components/MyMap";
+import Map from '../../../components/MyMiniMap'
 
 import {
   Button,
@@ -9,10 +9,15 @@ import {
   TextField,
   Autocomplete,
 } from "@mui/material";
+
 import { useRouter } from "next/router";
 
-const newUI = () => {
+const newAtracc = () => {
+  const router = useRouter();
+  const Options = ['Natural', 'Artificial', ''];
+
   const [atraction, setAtracc] = useState({
+    fk_atraccion_a: 2,
     id_atrac: "",
     latitude_a: "",
     longitude_a: "",
@@ -22,7 +27,6 @@ const newUI = () => {
     pageweb_a: "",
     img_a: "",
   });
-  const router = useRouter();
 
   const handlerChange = ({ target: { name, value } }) => {
     setAtracc({ ...atraction, [name]: value });
@@ -55,8 +59,8 @@ const newUI = () => {
         await updateHotel(router.query.id, atraction);
       } else {
         await createHotel(atraction);
+        router.push("/crud/atractions");
       }
-      router.push("/crud/atractions");
     } catch (error) {
       console.log(error);
     }
@@ -66,16 +70,18 @@ const newUI = () => {
     const response = await fetch("http://localhost:3000/api/atractions/" + id);
     const atraction = await response.json();
     setAtracc({
-      id_atrac: atraction.id_atracubicacion,
-      latitude_a: atraction.latitud_atrac,
-      longitude_a: atraction.longitud_atrac,
-      name_a: atraction.nombre_atrac,
-      description_a: atraction.descripcion_atrac,
-      direction_a: atraction.direccion_atrac,
-      pageweb_a: atraction.paginaweb_atrac,
-      img_a: atraction.imagen_atrac,
+      fk_atraccion_a: atraction.fk_atraccionatrac,
+      id_atrac: atraction.id_ubicacionatrac,
+      latitude_a: atraction.latitud_ubicacion,
+      longitude_a: atraction.longitud_ubicacion,
+      name_a: atraction.nombre_ubicacion,
+      description_a: atraction.descripcion_ubicacion,
+      direction_a: atraction.direccion_ubicacion,
+      pageweb_a: atraction.paginaweb_ubicacion,
+      img_a: atraction.imagen_ubicacion,
     });
   };
+
   useEffect(() => {
     if (router.query.id) loadHotel(router.query.id);
   }, [router.query]);
@@ -136,12 +142,12 @@ const newUI = () => {
             Cancel
           </Link>
         </div>
-        <div className="grid">
+        <div className="flex gap-x-7 items-center justify-center">
           <div>
             <form className="form-info" onSubmit={handleSubmit}>
               <div className="w-96">
-                {textField.map((field) => (
-                  <div className="information-atraction">
+                {textField.map((field, index) => (
+                  <div className="information-atraction" key={index}>
                     <p>{field.title}</p>
                     <TextField
                       onChange={handlerChange}
@@ -156,6 +162,22 @@ const newUI = () => {
                   </div>
                 ))}
               </div>
+
+              <div className='w-48'>
+                <Autocomplete
+                  options={Options}
+                  value={atraction.fk_atraccion_a === null ? Options[2] : Options[atraction.fk_atraccion_a]}
+                  onChange={(event, newValue) => { setAtracc({ ...atraction, fk_atraccion_a: Options.indexOf(newValue) }) }}
+                  id="auto-complete"
+                  autoComplete
+                  autoSelect
+                  includeInputInList
+                  renderInput={(params) => (
+                    <TextField {...params} label="Tipo de atraccion" variant="standard" />
+                  )}
+                />
+              </div>
+
               <div className=" flex justify-center items-center mt-4">
                 <Button
                   className="bg-green-500"
@@ -175,6 +197,19 @@ const newUI = () => {
               </div>
             </form>
           </div>
+
+          <div>
+            {router.query.id && (
+              <Map locations={
+                [{
+                  latitude_a: atraction.latitude_a,
+                  longitude_a: atraction.longitude_a,
+                }]
+              } TypeMap={3}
+                TypeIcon={1} />
+            )}
+          </div>
+
         </div>
         <style jsx>{`
           .information-atraction {
@@ -186,4 +221,4 @@ const newUI = () => {
   );
 };
 
-export default newUI;
+export default newAtracc;

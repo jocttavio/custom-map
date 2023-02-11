@@ -7,12 +7,13 @@ import { useEffect, useState } from "react";
 const IndexA = () => {
   const router = useRouter();
   const [atractions, setAtracc] = useState([]);
+
   const handleDelete = async (id) => {
     try {
       const res = await fetch("http://localhost:3000/api/atractions/" + id, {
         method: "DELETE",
       });
-      setAtracc(atractions.filter(atraction => atraction.id_atracubicacion !== id));
+      setAtracc(atractions.filter(atraction => atraction.id_ubicacionatrac !== id));
     } catch (error) {
       console.log(error);
     }
@@ -21,9 +22,9 @@ const IndexA = () => {
   const loadHotel = async () => {
     const response = await fetch("http://localhost:3000/api/atractions");
     const {rows: atraction} = await response.json();
-    console.log(atraction);
     setAtracc(atraction);
   };
+  
   useEffect(() => {
     loadHotel();
   }, []);
@@ -43,28 +44,28 @@ const IndexA = () => {
           {atractions.map((atraction) => (
             <div
               className="grid grid-cols-3 bg-black text-white h-20 mt-2 rounded-md"
-              key={atraction.id_atracubicacion}
+              key={atraction.id_ubicacionatrac}
             >
-              <div className="flex justify-start ">
-                <Image src={"/logo.jpg"} width={150} height={20} />
+              <div className="flex justify-start items-center">
+                <Image src={"/"+atraction.imagen_ubicacion} width={100} height={50} alt="img_atraccion"/>
               </div>
               <div className="flex items-center">
                 <h1 className="text-xl font-semibold text-center">
-                  {atraction.nombre_atrac}
+                  {atraction.nombre_ubicacion}
                 </h1>
               </div>
               <div className="flex items-center justify-center font-semibold">
                 <button
                   className="bg-blue-500 p-4 rounded-lg "
                   onClick={() =>
-                    router.push(`/crud/atractions/edit/${atraction.id_atracubicacion}`)
+                    router.push(`/crud/atractions/edit/${atraction.id_ubicacionatrac}`)
                   }
                 >
                   Update
                 </button>
                 <button
                   className="bg-red-600  p-4 rounded-lg ml-4"
-                  onClick={() => handleDelete(atraction.id_atracubicacion)}
+                  onClick={() => handleDelete(atraction.id_ubicacionatrac)}
                 >
                   Delete
                 </button>

@@ -13,64 +13,28 @@ import HotelIcon from '@mui/icons-material/Hotel';
 import BeachAccessIcon from '@mui/icons-material/BeachAccess';
 
 export default function GeneralMap({ TypeMap }) {
-
-    const locations1 = [{
-        "latitud": "16.862381833316288",
-        "longitud": "-99.87465523440797",
-    },
-    {
-        "latitud": "16.854731768200875",
-        "longitud": "-99.85898164928108",
-    },
-    {
-        "latitud": "16.861288147819533",
-        "longitud": "-99.8777030178885",
-    },
-    {
-        "latitud": "16.84947838180016",
-        "longitud": "-99.84913399968941",
-    },
-    {
-        "latitud": "16.845631386100543",
-        "longitud": "-99.84937653258652",
-    }];
-
-    const locations2 = [{
-        "latitud": "16.860484691337643",
-        "longitud": "-99.88198106729698",
-    },
-    {
-        "latitud": "16.84987680585275",
-        "longitud": "-99.85335240159746",
-    },
-    {
-        "latitud": "16.85540299504331",
-        "longitud": "-99.86109090611768",
-    },
-    {
-        "latitud": "16.843554909691797",
-        "longitud": "-99.84708990504417",
-    },
-    {
-        "latitud": "16.859787161440458",
-        "longitud": "-99.86633038513821",
-    }];
-
-    const IconArray = ['./ubication.png', './ubication2.png'];
+    const IconArray = ['/ubication.png', '/ubication2.png'];
     const DisabilityOptions = ['Discapacidad motora', 'Discapacidad visual', 'Discapacidad auditiva'];
     const AttractionOptions = ['Naturales', 'Artificiales'];
 
     const [Type_Map, setType_Map] = useState('');
     const [Options, setOptions] = useState([]);
-    
+
     const [ArrayButton, setArrayButton] = useState(Array(3).fill(false));
 
     const [map, setMap] = useState(null)
     const [indexMark, setIndexMark] = useState(0);
     const [selectedValue, setSelectedValue] = useState(null);
+    const [indexValue, setIndexValue] = useState(0);
+
     const [InfoMarkers, setInfoMarkers] = useState([{
-        "latitud": "",
-        "longitud": "",
+        latitud_ubicacion: "",
+        longitud_ubicacion: "",
+        nombre_ubicacion: "",
+        descripcion_ubicacion: "",
+        direccion_ubicacion: "",
+        paginaWeb_ubicacion: "",
+        imagen_ubicacion: ""
     }]);
 
     const customMarker = new Location.Icon({
@@ -84,6 +48,11 @@ export default function GeneralMap({ TypeMap }) {
     });
 
     const handleChange = (event, newValue) => {
+        if (Type_Map === "Atracciones") {
+            setIndexValue(AttractionOptions.indexOf(newValue));
+        } else {
+            setIndexValue(DisabilityOptions.indexOf(newValue));
+        }
         setSelectedValue(newValue);
     };
 
@@ -99,8 +68,13 @@ export default function GeneralMap({ TypeMap }) {
 
         setSelectedValue(null);
         setInfoMarkers([{
-            "latitud": "",
-            "longitud": "",
+            latitud_ubicacion: "",
+            longitud_ubicacion: "",
+            nombre_ubicacion: "",
+            descripcion_ubicacion: "",
+            direccion_ubicacion: "",
+            paginaWeb_ubicacion: "",
+            imagen_ubicacion: ""
         }]);
         setType_Map('Hoteles');
         setOptions(DisabilityOptions);
@@ -108,7 +82,7 @@ export default function GeneralMap({ TypeMap }) {
 
     const RestaurantMap = () => {
         map.setView([16.86, -99.87350399983222], 11)
-        
+
         const newArray = [...ArrayButton];
         newArray[0] = false;
         newArray[1] = true;
@@ -118,8 +92,13 @@ export default function GeneralMap({ TypeMap }) {
         setSelectedValue(null);
 
         setInfoMarkers([{
-            "latitud": "",
-            "longitud": "",
+            latitud_ubicacion: "",
+            longitud_ubicacion: "",
+            nombre_ubicacion: "",
+            descripcion_ubicacion: "",
+            direccion_ubicacion: "",
+            paginaWeb_ubicacion: "",
+            imagen_ubicacion: ""
         }]);
         setType_Map('Restaurantes');
         setOptions(DisabilityOptions);
@@ -127,7 +106,7 @@ export default function GeneralMap({ TypeMap }) {
 
     const TouristMap = () => {
         map.setView([16.86, -99.87350399983222], 11)
-        
+
         const newArray = [...ArrayButton];
         newArray[0] = false;
         newArray[1] = false;
@@ -137,49 +116,45 @@ export default function GeneralMap({ TypeMap }) {
         setSelectedValue(null);
 
         setInfoMarkers([{
-            "latitud": "",
-            "longitud": "",
+            latitud_ubicacion: "",
+            longitud_ubicacion: "",
+            nombre_ubicacion: "",
+            descripcion_ubicacion: "",
+            direccion_ubicacion: "",
+            paginaWeb_ubicacion: "",
+            imagen_ubicacion: ""
         }]);
         setType_Map('Atracciones');
         setOptions(AttractionOptions);
     };
 
 
-    const ShowMarkers = () => {
+    const ShowMarkers = async () => {
         map.setView([16.86, -99.87350399983222], 11)
 
         if (Type_Map === 'Hoteles') {
 
-            if (selectedValue === 'Discapacidad motora') {
-                setInfoMarkers(locations1);
-                setIndexMark(0);
-            } else if (selectedValue === 'Discapacidad visual') {
-                setInfoMarkers(locations2);
-                setIndexMark(1);
-            } else {
-                setInfoMarkers([{
-                    "latitud": "",
-                    "longitud": "",
-                }]);
-            }
+            const response = await fetch("http://localhost:3000/api/hotels" + indexValue);
+            const { rows: hotels } = await response.json();
+            setInfoMarkers(hotels);
+
+            setIndexMark(0);
 
         } else if (Type_Map === 'Restaurantes') {
 
-            if (selectedValue === 'Discapacidad motora') {
+            const response = await fetch("http://localhost:3000/api/restaurant");
+            const { rows: restaurants } = await response.json();
+            setInfoMarkers(restaurants);
 
-            } else if (selectedValue === 'Discapacidad visual') {
-
-            } else {
-
-            }
+            setIndexMark(1);
 
         } else {
 
-            if (selectedValue === 'Naturales') {
+            const response = await fetch("http://localhost:3000/api/atractions");
+            const { rows: atractions } = await response.json();
+            setInfoMarkers(atractions);
 
-            } else {
-
-            }
+            setIndexMark(1);
 
         }
     };
@@ -192,7 +167,7 @@ export default function GeneralMap({ TypeMap }) {
             newArray[1] = false;
             newArray[2] = false;
             setArrayButton(newArray);
-            
+
             setOptions(DisabilityOptions);
             setType_Map(TypeMap);
 
@@ -245,22 +220,22 @@ export default function GeneralMap({ TypeMap }) {
                         />
                     </div>
                     <div>
-                        <IconButton variant="contained" size='large' color='primary' disabled = {!selectedValue} onClick={ShowMarkers}>
+                        <IconButton variant="contained" size='large' color='primary' disabled={!selectedValue} onClick={ShowMarkers}>
                             <FilterAltIcon />
                         </IconButton>
                     </div>
                 </div>
 
                 <div className='flex flex-wrap flex-row justify-center items-center gap-y-3 gap-x-4 xl:w-[470px] lg:w-[450px] md:w-[370px] sm:w-[240px] w-[270px]'>
-                    <Button variant="contained"  size='small' disabled={ArrayButton[0]} onClick={HotelsMap} endIcon={<HotelIcon />}>
+                    <Button variant="contained" size='small' disabled={ArrayButton[0]} onClick={HotelsMap} endIcon={<HotelIcon />}>
                         Hoteles
                     </Button>
 
-                    <Button variant="contained"  size='small' disabled={ArrayButton[1]} onClick={RestaurantMap} endIcon={<RestaurantIcon />}>
+                    <Button variant="contained" size='small' disabled={ArrayButton[1]} onClick={RestaurantMap} endIcon={<RestaurantIcon />}>
                         Restaurantes
                     </Button>
 
-                    <Button variant="contained"  size='small' disabled={ArrayButton[2]} onClick={TouristMap} endIcon={<BeachAccessIcon />}>
+                    <Button variant="contained" size='small' disabled={ArrayButton[2]} onClick={TouristMap} endIcon={<BeachAccessIcon />}>
                         Atracctivos
                     </Button>
                 </div>

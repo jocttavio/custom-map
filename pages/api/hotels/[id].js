@@ -13,10 +13,11 @@ export default async function handler(req, res) {
       return res.status(400).json("method no allowed");
   }
 }
+
 const getHotel = async (query, res) => {
   try {
     const text =
-      "SELECT * FROM Tabla_UbicacionesHotel WHERE ID_HotelUbicacion = $1";
+      "SELECT * FROM Tabla_UbicacionesHotel WHERE ID_UbicacionHotel = $1";
     const value = [query.id];
     const result = await connection.query(text, value);
 
@@ -33,20 +34,22 @@ const getHotel = async (query, res) => {
 const updateHotel = async (query, res, body) => {
   try {
     const {
-      latitud_h,
-      longitud_h,
-      nombre_h,
+      fk_discapacidad_h,
+      latitude_h,
+      longitude_h,
+      name_h,
       description_h,
       direction_h,
       pageweb_h,
       img_h,
     } = body;
     const text =
-      "UPDATE Tabla_UbicacionesHotel SET Latitud_Hotel  = $1, Longitud_Hotel = $2, Nombre_Hotel = $3, Descripcion_Hotel = $4, Direccion_Hotel = $5, PaginaWeb_Hotel = $6, Imagen_Hotel = $7  WHERE ID_HotelUbicacion = $8 RETURNING *";
+      "UPDATE Tabla_UbicacionesHotel SET FK_DiscapacidadHotel = $1, Latitud_Ubicacion = $2, Longitud_Ubicacion = $3, Nombre_Ubicacion = $4, Descripcion_Ubicacion = $5, Direccion_Ubicacion = $6, PaginaWeb_Ubicacion = $7, Imagen_Ubicacion = $8  WHERE ID_UbicacionHotel = $9 RETURNING *";
     const values = [
-      latitud_h,
-      longitud_h,
-      nombre_h,
+      fk_discapacidad_h,
+      latitude_h,
+      longitude_h,
+      name_h,
       description_h,
       direction_h,
       pageweb_h,
@@ -66,7 +69,7 @@ const updateHotel = async (query, res, body) => {
 const deleteHotel = async (query, res) => {
   try {
     const text =
-      "DELETE FROM Tabla_UbicacionesHotel WHERE ID_HotelUbicacion = $1 RETURNING *";
+      "DELETE FROM Tabla_UbicacionesHotel WHERE ID_UbicacionHotel = $1 RETURNING *";
     const values = [query.id];
     const result = await connection.query(text, values);
     if (result.rows.length === 0)
