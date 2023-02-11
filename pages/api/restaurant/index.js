@@ -7,6 +7,8 @@ export default async function handler(req, res) {
       return await getRestaurant(req, res);
     case "POST":
       return await saveRestaurant(body, res);
+      case "PUT":
+        return await getRestaurantFk(body,res)
   }
 }
 const getRestaurant = async (req, res) => {
@@ -21,6 +23,19 @@ const getRestaurant = async (req, res) => {
   }
 };
 
+const getRestaurantFk = async (body, res) => {
+  try {
+    const { fk_discapacidad_r } = body;
+    const query =
+      "SELECT * FROM Tabla_UbicacionesRest WHERE FK_DiscapacidadRest = $1";
+
+      const value =[fk_discapacidad_r]
+    const result = await connection.query(query, value);
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error });
+  }
+};
 const saveRestaurant = async (body, res) => {
   try {
     const {

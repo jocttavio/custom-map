@@ -7,6 +7,8 @@ export default async function handler(req, res) {
       return await getAtraccs(req, res);
     case "POST":
       return await saveAtrac(body, res);
+      case "PUT":
+        return await getAtraccsFk(body, res);
   }
 }
 const getAtraccs = async (req, res) => {
@@ -18,6 +20,21 @@ const getAtraccs = async (req, res) => {
     return res.status(200).json(result);
   } catch (error) {
     return res.status(500).json({ message: message.error });
+  }
+};
+
+
+const getAtraccsFk = async (body, res) => {
+  try {
+    const { fk_discapacidad_a } = body;
+    const query =
+      "SELECT * FROM Tabla_UbicacionesAtrac WHERE FK_AtraccionAtrac = $1";
+
+      const value =[fk_discapacidad_a]
+    const result = await connection.query(query, value);
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error });
   }
 };
 

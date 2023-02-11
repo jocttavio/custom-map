@@ -7,6 +7,8 @@ export default async function handler(req, res) {
       return await getHotels(req, res);
     case "POST":
       return await saveHotel(body, res);
+    case "PUT":
+      return await getHotelsFk(body, res);
   }
 }
 const getHotels = async (req, res) => {
@@ -16,7 +18,21 @@ const getHotels = async (req, res) => {
     );
     return res.status(200).json(result);
   } catch (error) {
-    return res.status(500).json({ message: message.error });
+    return res.status(500).json({ message: error });
+  }
+};
+
+const getHotelsFk = async (body, res) => {
+  try {
+    const { fk_discapacidad_h } = body;
+    const query =
+      "SELECT * FROM Tabla_UbicacionesHotel WHERE FK_DiscapacidadHotel = $1";
+
+      const value =[fk_discapacidad_h]
+    const result = await connection.query(query, value);
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error });
   }
 };
 

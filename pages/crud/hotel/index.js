@@ -81,12 +81,3 @@ const IndexH = () => {
 
 export default IndexH;
 
-export const getServerSideProps = async (context) => {
-  const response = await fetch("http://localhost:3000/api/hotels");
-  const { rows: hotels } = await response.json();
-  return {
-    props: {
-      hotels,
-    },
-  };
-};
