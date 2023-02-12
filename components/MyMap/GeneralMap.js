@@ -185,16 +185,16 @@ export default function GeneralMap({ TypeMap }) {
     map.setView([16.86, -99.87350399983222], 11);
 
     if (Type_Map === "Hoteles") {
-      const { rows: hotels } = loadHotel(indexValue);
+      const { rows: hotels } = await loadHotel(indexValue);
       setInfoMarkers(hotels);
       setIndexMark(0);
     } else if (Type_Map === "Restaurantes") {
-      const { rows: restaurants } = loadRestaurant(indexValue);
+      const { rows: restaurants } = await loadRestaurant(indexValue);
       setInfoMarkers(restaurants);
 
       setIndexMark(1);
     } else {
-      const { rows: atractions } = loadAtraction(indexValue);
+      const { rows: atractions } = await loadAtraction(indexValue);
       setInfoMarkers(atractions);
 
       setIndexMark(1);
