@@ -208,7 +208,7 @@ const newUI = () => {
                   longitude_h: hotel.longitude_h,
                 }]
               } TypeMap={1}
-                TypeIcon={0} />
+                TypeIcon={hotel.fk_discapacidad_h} />
             )}
           </div>
 

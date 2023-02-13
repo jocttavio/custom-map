@@ -206,7 +206,7 @@ const newAtracc = () => {
                   longitude_a: atraction.longitude_a,
                 }]
               } TypeMap={3}
-                TypeIcon={1} />
+                TypeIcon={atraction.fk_atraccion_a+3} />
             )}
           </div>
 

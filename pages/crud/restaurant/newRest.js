@@ -204,7 +204,7 @@ const newRest = () => {
                   longitude_r: restaurant.longitude_r,
                 }]
               } TypeMap={2}
-                TypeIcon={0} />
+                TypeIcon={restaurant.fk_discapacidad_r} />
             )}
           </div>
 

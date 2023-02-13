@@ -9,7 +9,7 @@ import MarkersAtrac from './MarkersAtrac';
 import MarkersRest from './MarkersRest';
 
 export default function MiniMap({ locations, TypeMap, TypeIcon }) {
-    const IconArray = ['/ubication.png', '/ubication2.png'];
+    const IconArray = ['/marcador_motora.png','/marcador_visual.png','/marcador_auditivo.png','/marcador_natural.png','/marcador_artificial.png'];
 
     const customMarker = new Location.Icon({
         iconUrl: IconArray[TypeIcon],
