@@ -54,7 +54,6 @@ function Footer() {
         </div>
 
         <div className="flex xl:flex-row lg:flex-row md:flex-row sm:flex-row flex-col items-center justify-end xl:w-7/12 lg:w-7/12 md:w-7/12 sm:w-8/12 w-5/12">
-          <div className={styles.ButtonOption}  onClick={() => router.push('/')}>Inicio</div>
           <div className={styles.ButtonOption} onClick={handleClickHotel}>Hoteles</div>
           <div className={styles.ButtonOption} onClick={handleClickAtraccion}>Atracciones</div>
           <div className={styles.ButtonOption} onClick={handleClickRestaurante}>Restaurantes</div>

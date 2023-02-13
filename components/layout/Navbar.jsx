@@ -52,7 +52,6 @@ const Navbar = () => {
             <svg className="w-10 h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
           </div>
           <div className={classes.OptionMenu}>
-            <div className={classes.ButtonOption} onClick={() => router.push('/')}>inicio</div>
             <div className={classes.ButtonOption} onClick={handleClickHotel}>Hoteles</div>
             <div className={classes.ButtonOption} onClick={handleClickAtraccion}>Atracciones</div>
             <div className={classes.ButtonOption} onClick={handleClickRestaurante}>Restaurantes</div>
