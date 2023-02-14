@@ -20,33 +20,38 @@ export default function Home() {
           href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap"
           rel="stylesheet"
         />
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"></link>
       </Head>
       <Navbar />
+      
       <div
-        className="h-screen bg-no-repeat bg-cover grid grid-cols-3"
+        className="xl:h-screen h-auto bg-no-repeat bg-cover bg-fixed bg-top " 
         style={{
-          backgroundImage: "url(./princess_hotel.jpg)",
+          backgroundImage: "url(https://cdn.pixabay.com/photo/2016/11/04/10/12/hospice-1797305_960_720.jpg)",
         }}
       >
-        <div className="col-span-2 grid grid-rows-3 ">
-          <div className="flex justify-center items-center">
-            <h1 className="title_text text-5xl ">I EXPERIENCE</h1>
+        <div className=" grid xl:grid-cols-3 grid-cols-1 h-full backdrop-opacity-10 bg-black/30">
+
+        <div className="xl:col-span-2 grid grid-rows-2   ">
+          <div className="flex flex-col  p-4 justify-center xl:h-auto h-[400px]  xl:text-7xl text-4xl ">
+            <h1 className="title_text  text-white tracking-wider">BIENVENIDOS A</h1>
+            <h1 className="title_text   text-white tracking-wider underline decoration-pink-500">I EXPERIENCE</h1>
           </div>
-          <div className="row-span-2 flex justify-center items-center  information_text text-xl p-4 backdrop-opacity-10 bg-white/30 ">
+          <div className="flex information_text xl:text-xl text-base xl:h-auto  xl:p-4 p-2 text-justify text-white tracking-wider ">
             <p>
               En la necesidad de comentar la igualdad de oportunidades para
-              poder viajar de una manera cómoda, autónoma y segura; se ha creado
-              I Experience. Es un sitio web el cual busca proporcionar la
+              poder viajar de una manera cómoda, autónoma y segura, se ha creado
+              I Experience. <br/> Es un sitio web el cual busca proporcionar la
               búsqueda de hoteles, restaurantes y atracciones que sean
               incluyentes. De esta manera las personas con capacidades
               diferentes pueden encontrar lo mejor para su viaje además de poder
-              crear una nueva experiencia, porque "Todos tenemos derecho de
-              viajar, conocer y disfrutar "
+              crear una nueva experiencia, porque..
+              <p className="font-extrabold text-2xl">"Todos tenemos derecho de
+              viajar, conocer y disfrutar "</p>
             </p>
           </div>
         </div>
-
-        <h1 className="h-20 text-center text-5xl">Este es el comienzo</h1>
+        </div>
       </div>
       <Footer />
     </div>

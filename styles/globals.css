@@ -34,4 +34,9 @@ a {
 }
 .information_text {
   font-family: "Red Hat Display", sans-serif;
+  font-color: white;
+}
+.text_logo{
+  font-family: 'Pacifico', cursive;
+
 }
