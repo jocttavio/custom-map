@@ -16,9 +16,12 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import DescriptionIcon from '@mui/icons-material/Description';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import WebIcon from '@mui/icons-material/Web';
+import HomeIcon from '@mui/icons-material/Home';
+import { useRouter } from 'next/router';
 
 export default function GeneralMap({ TypeMap }) {
-  const IconArray = ['/marcador_motora.png','marcador_visual.png','/marcador_auditivo.png','marcador_natural.png','marcador_artificial.png'];
+  const router = useRouter();
+  const IconArray = ['/marcador_motora.png', 'marcador_visual.png', '/marcador_auditivo.png', 'marcador_natural.png', 'marcador_artificial.png'];
   const DisabilityOptions = ["Discapacidad motora", "Discapacidad visual", "Discapacidad auditiva",];
   const AttractionOptions = ["Naturales", "Artificiales"];
 
@@ -214,7 +217,7 @@ export default function GeneralMap({ TypeMap }) {
 
       const { rows: atractions } = await loadAtraction(indexValue);
       setInfoMarkers(atractions);
-      setIndexMark(indexValue+3);
+      setIndexMark(indexValue + 3);
 
     }
   };
@@ -269,13 +272,25 @@ export default function GeneralMap({ TypeMap }) {
 
   return (
     <div className="relative w-full h-[100vh]">
-      <div className="absolute top-2 left-14 flex xl:flex-row lg:flex-row md:flex-row sm:flex-row flex-col xl:justify-start justify-center items-center gap-x-4 gap-y-2 z-[1200]  bg-[#E4DCAB] rounded-lg p-3">
-        <div className="flex justify-center items-center">
-          <div className="xl:w-[240px] lg:w-[240px] md:w-[240px] sm:w-[220px] w-[220px]">
+      <div className="absolute top-2 left-14 xl:right-96 lg:right-80 md:right-10 sm:right-4 right-2 flex xl:flex-row lg:flex-row md:flex-row sm:flex-row flex-col xl:justify-start justify-center items-center gap-x-2 gap-y-2 z-[1200]  bg-[#E4DCAB] rounded-lg p-3">
+        <div className="flex flex-wrap flex-row justify-center items-center gap-y-1 gap-x-2">
+          <div className="">
+            <IconButton
+              variant="contained"
+              size="large"
+              color="primary"
+              onClick={() => router.push('/')}
+            >
+              <HomeIcon />
+            </IconButton>
+          </div>
+
+          <div className="flex justify-center items-center">
             <Autocomplete
               options={Options}
               id="auto-complete"
               onChange={handleChange}
+              sx={{ width: 240 }}
               autoComplete
               autoSelect
               size="small"
@@ -286,8 +301,6 @@ export default function GeneralMap({ TypeMap }) {
                 <TextField {...params} label={Type_Map} />
               )}
             />
-          </div>
-          <div>
             <IconButton
               variant="contained"
               size="large"
@@ -298,9 +311,10 @@ export default function GeneralMap({ TypeMap }) {
               <FilterAltIcon />
             </IconButton>
           </div>
+
         </div>
 
-        <div className="flex flex-wrap flex-row justify-center items-center gap-y-3 gap-x-4 xl:w-[470px] lg:w-[450px] md:w-[370px] sm:w-[240px] w-[270px]">
+        <div className="flex flex-wrap flex-row justify-center items-center gap-y-3 gap-x-4">
           <Button
             variant="contained"
             size="small"
@@ -330,6 +344,8 @@ export default function GeneralMap({ TypeMap }) {
           >
             Atracctivos
           </Button>
+
+
         </div>
       </div>
 
@@ -350,7 +366,7 @@ export default function GeneralMap({ TypeMap }) {
               <Marker key={index} position={{ lat: info.latitud_ubicacion, lng: info.longitud_ubicacion }} icon={customMarker} eventHandlers={{
                 click: (e) => {
                   map.locate()
-                  map.flyTo([(e.latlng.lat + 0.0009).toString(), e.latlng.lng.toString()], 18)
+                  map.flyTo([(e.latlng.lat + 0.0010).toString(), e.latlng.lng.toString()], 18)
                 },
               }}>
                 <Popup>
@@ -397,7 +413,7 @@ export default function GeneralMap({ TypeMap }) {
                 </IconButton>
                 {CardInfomation.paginaweb_ubicacion}
               </div>
-              
+
               <div className="my-1 font-semibold">
                 <IconButton variant="contained" size="large" color="inherit">
                   <LocationOnIcon />
