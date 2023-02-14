@@ -28,3 +28,10 @@ a {
     background: white;
   }
 }
+
+.title_text {
+  font-family: "Alfa Slab One", cursive;
+}
+.information_text {
+  font-family: "Red Hat Display", sans-serif;
+}

@@ -1,6 +1,6 @@
 import classes from "../../styles/header.module.css";
 import SearchIcon from '@mui/icons-material/Search';
-import { IconButton } from '@mui/material'
+import { IconButton } from '@mui/material';
 import { useRouter } from 'next/router';
 import Image from "next/image";
 
@@ -30,11 +30,11 @@ const Navbar = () => {
 
   return (
     <header className="flex flex-col">
-      <div className="flex justify-center items-center h-[90px] bg-[#f45690]">
+      <div className="flex justify-center items-center h-[50px] bg-[#f45690]">
         <Image src="/logo.jpeg"
           alt="Picture of the author"
-          width={150}
-          height={150}
+          width={100}
+          height={100}
         />
         <p>I Experience</p>
       </div>
