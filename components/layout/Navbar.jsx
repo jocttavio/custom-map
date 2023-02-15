@@ -65,6 +65,8 @@ const Navbar = () => {
               ></path>
             </svg>
           </div>
+         
+          <div className={classes.OptionMenu}>
           {/* <div className="flex justify-start items-center xl:w-3/12 lg:w-4/12 md:w-5/12 sm:w-10/12 w-10/12 h-full ml-2">
             <input
               type="text"
@@ -75,8 +77,6 @@ const Navbar = () => {
               <SearchIcon />
             </IconButton>
           </div> */}
-          <div className={classes.OptionMenu}>
-            
             <div className={classes.ButtonOption} onClick={handleClickHotel}>
               Hoteles
             </div>
