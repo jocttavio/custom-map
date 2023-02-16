@@ -12,7 +12,7 @@ import {
 
 import { useRouter } from "next/router";
 
-const newRest = () => {
+const NewRest = () => {
   const Options = ['Discapacidad motora', 'Discapacidad visual', 'Discapacidad auditiva',''];
 
   const [restaurant, setRestaurant] = useState({
@@ -216,7 +216,7 @@ const newRest = () => {
         `}</style>
       </div>
     </Index>
-  );
+  )
 };
 
-export default newRest;
+export default NewRest;

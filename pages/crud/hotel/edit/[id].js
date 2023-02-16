@@ -1,4 +1,4 @@
 
-import Update from '../newUI';
+import Update from '../NewUI';
 
 export default Update;

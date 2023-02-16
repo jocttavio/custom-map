@@ -12,7 +12,7 @@ import {
 
 import { useRouter } from "next/router";
 
-const newAtracc = () => {
+const NewAtracc = () => {
   const router = useRouter();
   const Options = ['Natural', 'Artificial', ''];
 
@@ -221,4 +221,4 @@ const newAtracc = () => {
   );
 };
 
-export default newAtracc;
+export default NewAtracc;

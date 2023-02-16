@@ -1,3 +1,3 @@
-import updateRest from '../newRest';
+import updateRest from '../NewRest';
 
 export default updateRest;

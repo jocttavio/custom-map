@@ -1,3 +1,3 @@
-import UpdateAtraction from '../newAtracc';
+import UpdateAtraction from '../NewAtracc';
 
 export default UpdateAtraction;

@@ -12,7 +12,7 @@ import {
 
 import { useRouter } from "next/router";
 
-const newUI = () => {
+const NewUI = () => {
 
   const Options = ['Discapacidad motora', 'Discapacidad visual', 'Discapacidad auditiva', ''];
 
@@ -223,4 +223,4 @@ const newUI = () => {
   );
 };
 
-export default newUI;
+export default NewUI;
