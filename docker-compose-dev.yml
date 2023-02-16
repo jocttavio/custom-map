@@ -1,8 +1,8 @@
 version: '3'
 networks:
-  npm-nw:
+  net-tecnomex:
     external: true
-  docker-sectur:
+  net_map:
     driver: bridge
 services:
   app:
@@ -13,20 +13,20 @@ services:
     volumes:
       - ./pages:/usr/app/pages
     networks:
-      - npm-nw
-      - docker-sectur
+      - net-tecnomex
+      - net_map
   postgres:
     image: postgres
     ports:
-      - "5433:5432"
+      - "5432:5432"
     environment:
       - POSTGRES_USER=jocta
       - POSTGRES_PASSWORD=psswd
       - POSTGRES_DB=postgres
     networks:
-      - docker-sectur
+      - net_map
     volumes:
-      - nextjs-cia-app_postgres-data:/var/lib/postgresql/data
+      - nextjs-db-postgres-data:/var/lib/postgresql/data
 
   pgadmin:
     image: dpage/pgadmin4
@@ -36,8 +36,7 @@ services:
       - PGADMIN_DEFAULT_EMAIL=admin@domain.com
       - PGADMIN_DEFAULT_PASSWORD=password
     networks:
-      - docker-sectur
+      - net_map
 
 volumes:
-  nextjs-cia-app_postgres-data:
-    external: true
+  nextjs-db-postgres-data:

@@ -4,10 +4,10 @@ let connection;
 if(!connection){
   
  connection = new Pool ({
-  user: 'joctavio',
+  user: 'jocta',
   password: 'psswd',
-  host: 'localhost',
-  port: '5433',
+  host: '172.20.0.1',
+  port: '5432',
   database: 'db_preparatory'
   })
 }
