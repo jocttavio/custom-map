@@ -10,7 +10,7 @@ const IndexA = () => {
 
   const handleDelete = async (id) => {
     try {
-      const res = await fetch("http://localhost:3000/api/atractions/" + id, {
+      const res = await fetch("http://iexperience.devsmex.com/api/atractions/" + id, {
         method: "DELETE",
       });
       setAtracc(atractions.filter(atraction => atraction.id_ubicacionatrac !== id));
@@ -20,7 +20,7 @@ const IndexA = () => {
   };
 
   const loadHotel = async () => {
-    const response = await fetch("http://localhost:3000/api/atractions");
+    const response = await fetch("http://iexperience.devsmex.com/api/atractions");
     const {rows: atraction} = await response.json();
     setAtracc(atraction);
   };

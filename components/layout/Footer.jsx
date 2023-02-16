@@ -42,7 +42,7 @@ function Footer() {
         </div>
 
         <div className="flex justify-center text-center w-5/12">
-          <p>Lugar de la escuela</p>
+          <p>Cetis 90</p>
         </div>
 
       </div>

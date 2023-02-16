@@ -11,7 +11,7 @@ const IndexH = () => {
 
   const handleDelete = async (id) => {
     try {
-      const res = await fetch("http://localhost:3000/api/hotels/" + id, {
+      const res = await fetch("http://iexperience.devsmex.com/api/hotels/" + id, {
         method: "DELETE",
       });
       setHotels(hotels.filter(hotel => hotel.id_ubicacionhotel !== id));
@@ -21,7 +21,7 @@ const IndexH = () => {
   };
 
   const loadHotel = async () => {
-    const response = await fetch("http://localhost:3000/api/hotels");
+    const response = await fetch("http://iexperience.devsmex.com/api/hotels");
     const {rows: hotel} = await response.json();
     setHotels(hotel);
   };

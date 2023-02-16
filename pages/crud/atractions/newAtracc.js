@@ -33,7 +33,7 @@ const newAtracc = () => {
   };
 
   const createHotel = async (atraction) => {
-    await fetch("http://localhost:3000/api/atractions", {
+    await fetch("http://iexperience.devsmex.com/api/atractions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +43,7 @@ const newAtracc = () => {
   };
 
   const updateHotel = async (id, atraction) => {
-    await fetch("http://localhost:3000/api/atractions/" + id, {
+    await fetch("http://iexperience.devsmex.com/api/atractions/" + id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -67,7 +67,7 @@ const newAtracc = () => {
   };
 
   const loadHotel = async (id) => {
-    const response = await fetch("http://localhost:3000/api/atractions/" + id);
+    const response = await fetch("http://iexperience.devsmex.com/api/atractions/" + id);
     const atraction = await response.json();
     setAtracc({
       fk_atraccion_a: atraction.fk_atraccionatrac,

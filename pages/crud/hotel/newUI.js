@@ -34,7 +34,7 @@ const newUI = () => {
   };
 
   const createHotel = async (hotel) => {
-    await fetch("http://localhost:3000/api/hotels", {
+    await fetch("http://iexperience.devsmex.com/api/hotels", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +44,7 @@ const newUI = () => {
   };
 
   const updateHotel = async (id, hotel) => {
-    await fetch("http://localhost:3000/api/hotels/" + id, {
+    await fetch("http://iexperience.devsmex.com/api/hotels/" + id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -68,7 +68,7 @@ const newUI = () => {
   };
 
   const loadHotel = async (id) => {
-    const response = await fetch("http://localhost:3000/api/hotels/" + id);
+    const response = await fetch("http://iexperience.devsmex.com/api/hotels/" + id);
     const hotel = await response.json();
     setHotel({
       fk_discapacidad_h: hotel.fk_discapacidadhotel,
