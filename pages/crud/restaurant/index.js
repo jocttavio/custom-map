@@ -34,7 +34,7 @@ const IndexR = () => {
       <div className="grid p-40">
         <div className="flex justify-end ">
           <Link
-            href={"/crud/restaurant/newRest"}
+            href={"/crud/restaurant/NewRest"}
             className="text-lg font-semibold p-4 bg-green-400 rounded-xl"
           >
             New Restaurant
