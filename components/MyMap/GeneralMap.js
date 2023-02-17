@@ -390,7 +390,7 @@ export default function GeneralMap({ TypeMap }) {
 
       {ShowInformation && (
         <div className={style.ContentInformation}>
-          <div className="relative xl:w-[540px] lg:w-[500px] md:w-[480px] sm:w-[450px] w-[350px] xl:h-[520px] lg:h-[550px] md:h-[580px] sm:h-[590px] h-[600px] bg-[#f7f1e3] rounded-2xl shadow-2xl">
+          <div className="relative xl:w-[750px] lg:w-[600px] md:w-[580px] sm:w-[550px] w-[450px] xl:h-[570px] lg:h-[570px] md:h-[580px] sm:h-[590px] h-[600px] bg-[#f7f1e3] rounded-2xl shadow-2xl overflow-auto">
 
             <div className="absolute top-0 right-0">
               <IconButton variant="contained" size="large" color="error" onClick={() => setShowInformation(false)}>
@@ -398,35 +398,42 @@ export default function GeneralMap({ TypeMap }) {
               </IconButton>
             </div>
 
-            <div className="flex justify-center items-center h-[55%]">
+            <div className="flex justify-center items-center h-[50%]">
               <Image className="rounded-xl shadow-xl" src={"/" + CardInfomation.imagen_ubicacion} width={350} height={200} alt="img_atraccion" />
             </div>
 
-            <div className="h-[45%]">
+            <div className="h-[50%]">
               <div className={style.NombreMarker}>
                 {CardInfomation.nombre_ubicacion}
               </div>
 
-              <div className="my-1 font-semibold">
+              <div className="flex flex-row justify-start items-center font-semibold mx-3">
                 <IconButton variant="contained" size="large" color="inherit">
                   <WebIcon />
                 </IconButton>
-                {CardInfomation.paginaweb_ubicacion}
+                <a href={CardInfomation.paginaweb_ubicacion} target='_blank' rel="noopener noreferrer">
+                  {CardInfomation.paginaweb_ubicacion}
+                </a>
               </div>
 
-              <div className="my-1 font-semibold">
+              <div className="flex flex-row justify-start items-center font-semibold mx-3">
                 <IconButton variant="contained" size="large" color="inherit">
                   <LocationOnIcon />
                 </IconButton>
-                {CardInfomation.direccion_ubicacion}
+                <div>
+                  {CardInfomation.direccion_ubicacion}
+                </div>
               </div>
 
-              <div className="my-1 font-semibold">
+              <div className="flex flex-row justify-start items-center font-semibold mx-4 mb-2">
                 <IconButton variant="contained" size="large" color="inherit">
                   <DescriptionIcon />
                 </IconButton>
-                {CardInfomation.descripcion_ubicacion}
+                <div className="text-justify whitespace-pre-line indent-2">
+                  {CardInfomation.descripcion_ubicacion}
+                </div>
               </div>
+
             </div>
           </div>
         </div>
