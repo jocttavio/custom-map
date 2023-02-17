@@ -152,12 +152,13 @@ const NewRest = () => {
                     <TextField
                       onChange={handlerChange}
                       name={field.name}
-                      fullWidth
-                      id="standard-basic"
                       label={field.label}
-                      size="small"
-                      variant="standard"
                       value={field.value}
+                      multiline
+                      fullWidth
+                      rows={2}
+                      id="outlined-multiline-static"
+                      size="small"
                     />
                   </div>
                 ))}

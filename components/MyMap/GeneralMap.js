@@ -390,7 +390,7 @@ export default function GeneralMap({ TypeMap }) {
 
       {ShowInformation && (
         <div className={style.ContentInformation}>
-          <div className="relative xl:w-[750px] lg:w-[600px] md:w-[580px] sm:w-[550px] w-[450px] xl:h-[570px] lg:h-[570px] md:h-[580px] sm:h-[590px] h-[600px] bg-[#f7f1e3] rounded-2xl shadow-2xl overflow-auto">
+          <div className="relative xl:w-[790px] lg:w-[630px] md:w-[590px] sm:w-[560px] w-[470px] xl:h-[590px] lg:h-[590px] md:h-[600px] sm:h-[610px] h-[620px] bg-[#f7f1e3] rounded-2xl shadow-2xl overflow-auto">
 
             <div className="absolute top-0 right-0">
               <IconButton variant="contained" size="large" color="error" onClick={() => setShowInformation(false)}>
@@ -398,11 +398,11 @@ export default function GeneralMap({ TypeMap }) {
               </IconButton>
             </div>
 
-            <div className="flex justify-center items-center h-[50%]">
+            <div className="flex justify-center items-center h-[55%]">
               <Image className="rounded-xl shadow-xl" src={"/" + CardInfomation.imagen_ubicacion} width={350} height={200} alt="img_atraccion" />
             </div>
 
-            <div className="h-[50%]">
+            <div className="flex flex-col gap-y-2 h-[45%]">
               <div className={style.NombreMarker}>
                 {CardInfomation.nombre_ubicacion}
               </div>
@@ -425,7 +425,7 @@ export default function GeneralMap({ TypeMap }) {
                 </div>
               </div>
 
-              <div className="flex flex-row justify-start items-center font-semibold mx-4 mb-2">
+              <div className="flex flex-row justify-start items-center font-semibold mx-4">
                 <IconButton variant="contained" size="large" color="inherit">
                   <DescriptionIcon />
                 </IconButton>
