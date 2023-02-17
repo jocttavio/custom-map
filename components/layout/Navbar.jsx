@@ -32,7 +32,7 @@ const Navbar = () => {
     <header className="flex flex-col">
       {/*  */}
 
-      <div className="flex flex-row items-center justify-between  p-3 w-full bg-[#f45690]">
+      <div className="flex flex-row items-center justify-between w-full bg-[#f45690]">
         <div className="flex items-center  bg-[#f45690]">
           {/* <div>
           <Image
