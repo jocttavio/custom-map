@@ -13,7 +13,7 @@ import BeachAccessIcon from "@mui/icons-material/BeachAccess";
 import { Marker, Popup } from 'react-leaflet'
 import Image from "next/image";
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import DescriptionIcon from '@mui/icons-material/Description';
+import DoneAllIcon from '@mui/icons-material/DoneAll';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import WebIcon from '@mui/icons-material/Web';
 import HomeIcon from '@mui/icons-material/Home';
@@ -425,14 +425,24 @@ export default function GeneralMap({ TypeMap }) {
                 </div>
               </div>
 
-              <div className="flex flex-row justify-start items-center font-semibold mx-4">
-                <IconButton variant="contained" size="large" color="inherit">
-                  <DescriptionIcon />
-                </IconButton>
-                <div className="text-justify whitespace-pre-line indent-2">
-                  {CardInfomation.descripcion_ubicacion}
+              <ul className={style.ContentDescription}>
+                <div>
+                  <IconButton variant="contained" size="large" color="inherit">
+                    <DoneAllIcon />
+                  </IconButton>
+                  Accesibilidad
                 </div>
-              </div>
+                <div className="xl:ml-16 lg:ml-16 md:ml-10 sm:ml-9 ml-8 leading-7 mb-2">
+                  {
+                    CardInfomation.descripcion_ubicacion.split('\n').map((line, index) => (
+                      <li key={index}>
+                        {line}
+                      </li>
+                    ))
+                  }
+                </div>
+
+              </ul>
 
             </div>
           </div>

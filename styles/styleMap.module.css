@@ -23,3 +23,6 @@
     position: fixed;
 }
 
+.ContentDescription{
+    @apply flex flex-col items-start font-semibold mx-3 whitespace-pre-line list-decimal;
+}
