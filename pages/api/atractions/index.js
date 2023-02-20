@@ -26,11 +26,11 @@ const getAtraccs = async (req, res) => {
 
 const getAtraccsFk = async (body, res) => {
   try {
-    const { fk_discapacidad_a } = body;
+    const { discapacidad_a } = body;
     const query =
-      "SELECT * FROM Tabla_UbicacionesAtrac WHERE FK_AtraccionAtrac = $1";
+      "SELECT * FROM Tabla_UbicacionesAtrac WHERE fk_discapacidadatrac = $1";
 
-      const value =[fk_discapacidad_a]
+      const value =[discapacidad_a]
     const result = await connection.query(query, value);
     return res.status(200).json(result);
   } catch (error) {
@@ -41,7 +41,7 @@ const getAtraccsFk = async (body, res) => {
 const saveAtrac = async (body, res) => {
   try {
     const {
-      fk_atraccion_a,
+      discapacidad_a,
       latitude_a,
       longitude_a,
       name_a,
@@ -51,10 +51,10 @@ const saveAtrac = async (body, res) => {
       img_a,
     } = body;
     const query =
-      "INSERT INTO  Tabla_UbicacionesAtrac(FK_AtraccionAtrac, Latitud_Ubicacion, Longitud_Ubicacion,Nombre_Ubicacion, Descripcion_Ubicacion, Direccion_Ubicacion, PaginaWeb_Ubicacion, Imagen_Ubicacion ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *";
+      "INSERT INTO  Tabla_UbicacionesAtrac(fk_discapacidadatrac, Latitud_Ubicacion, Longitud_Ubicacion,Nombre_Ubicacion, Descripcion_Ubicacion, Direccion_Ubicacion, PaginaWeb_Ubicacion, Imagen_Ubicacion ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *";
 
     const values = [
-      fk_atraccion_a,
+      discapacidad_a,
       latitude_a,
       longitude_a,
       name_a,

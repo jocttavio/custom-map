@@ -14,10 +14,10 @@ import { useRouter } from "next/router";
 
 const NewAtracc = () => {
   const router = useRouter();
-  const Options = ['', 'Artificial', 'Natural'];
+  const Options = ['Discapacidad motora', 'Discapacidad visual', 'Discapacidad auditiva', ''];
 	
   const [atraction, setAtracc] = useState({
-    fk_atraccion_a: 2,
+    discapacidad_a: 3,
     id_atrac: "",
     latitude_a: "",
     longitude_a: "",
@@ -70,7 +70,7 @@ const NewAtracc = () => {
     const response = await fetch("http://iexperience.devsmex.com/api/atractions/" + id);
     const atraction = await response.json();
     setAtracc({
-      fk_atraccion_a: atraction.fk_atraccionatrac,
+      discapacidad_a: atraction.fk_discapacidadatrac,
       id_atrac: atraction.id_ubicacionatrac,
       latitude_a: atraction.latitud_ubicacion,
       longitude_a: atraction.longitud_ubicacion,
@@ -167,8 +167,8 @@ const NewAtracc = () => {
               <div className='w-48'>
                 <Autocomplete
                   options={Options}
-                  value={atraction.fk_atraccion_a === null ? Options[2] : Options[atraction.fk_atraccion_a]}
-                  onChange={(event, newValue) => { setAtracc({ ...atraction, fk_atraccion_a: Options.indexOf(newValue) }) }}
+                  value={atraction.discapacidad_a === null ? Options[3] : Options[atraction.discapacidad_a]}
+                  onChange={(event, newValue) => { setAtracc({ ...atraction, discapacidad_a: Options.indexOf(newValue)}) }}
                   id="auto-complete"
                   autoComplete
                   autoSelect
@@ -207,7 +207,7 @@ const NewAtracc = () => {
                   longitude_a: atraction.longitude_a,
                 }]
               } TypeMap={3}
-                TypeIcon={atraction.fk_atraccion_a} />
+                TypeIcon={atraction.discapacidad_a} />
             )}
           </div>
 

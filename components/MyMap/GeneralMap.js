@@ -21,7 +21,7 @@ import { useRouter } from 'next/router';
 
 export default function GeneralMap({ TypeMap }) {
   const router = useRouter();
-  const IconArray = ['/marcador_motora.png', 'marcador_visual.png', '/marcador_auditivo.png', 'marcador_natural.png', 'marcador_artificial.png'];
+  const IconArray = ['/marcador_motora.png', 'marcador_visual.png', '/marcador_auditivo.png'];
   const DisabilityOptions = ["Discapacidad motora", "Discapacidad visual", "Discapacidad auditiva",];
   const AttractionOptions = ["Naturales", "Artificiales"];
 
@@ -70,11 +70,7 @@ export default function GeneralMap({ TypeMap }) {
   });
 
   const handleChange = (event, newValue) => {
-    if (Type_Map === "Atracciones") {
-      setIndexValue(AttractionOptions.indexOf(newValue));
-    } else {
-      setIndexValue(DisabilityOptions.indexOf(newValue));
-    }
+    setIndexValue(DisabilityOptions.indexOf(newValue));
     setSelectedValue(newValue);
   };
 
@@ -153,7 +149,7 @@ export default function GeneralMap({ TypeMap }) {
     ]);
 
     setType_Map("Atracciones");
-    setOptions(AttractionOptions);
+    setOptions(DisabilityOptions);
   };
 
   const loadHotel = async (fk) => {
@@ -191,7 +187,7 @@ export default function GeneralMap({ TypeMap }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        fk_discapacidad_a: fk,
+        discapacidad_a: fk,
       }),
     });
 
@@ -217,13 +213,12 @@ export default function GeneralMap({ TypeMap }) {
 
       const { rows: atractions } = await loadAtraction(indexValue);
       setInfoMarkers(atractions);
-      setIndexMark(indexValue + 3);
+      setIndexMark(indexValue);
 
     }
   };
 
   const CardInformation = (e, nombre, descripcion, direccion, paginaweb, imagen) => {
-
     setCardInformation({
       nombre_ubicacion: nombre,
       descripcion_ubicacion: descripcion,
@@ -238,6 +233,7 @@ export default function GeneralMap({ TypeMap }) {
 
   useEffect(() => {
     if (TypeMap === "Hoteles") {
+
       const newArray = [...ArrayButton];
       newArray[0] = true;
       newArray[1] = false;
@@ -247,6 +243,7 @@ export default function GeneralMap({ TypeMap }) {
       setOptions(DisabilityOptions);
       setType_Map(TypeMap);
     } else if (TypeMap === "Restaurantes") {
+
       const newArray = [...ArrayButton];
       newArray[0] = false;
       newArray[1] = true;
@@ -256,14 +253,16 @@ export default function GeneralMap({ TypeMap }) {
       setOptions(DisabilityOptions);
       setType_Map(TypeMap);
     } else if (TypeMap === "Atracciones") {
+
       const newArray = [...ArrayButton];
       newArray[0] = false;
       newArray[1] = false;
       newArray[2] = true;
       setArrayButton(newArray);
 
-      setOptions(AttractionOptions);
+      setOptions(DisabilityOptions);
       setType_Map(TypeMap);
+      
     } else {
       setOptions([""]);
       setType_Map("");

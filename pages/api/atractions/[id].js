@@ -31,26 +31,10 @@ const getAtrac = async (query, res) => {
   }
 };
 
-const getOption = async (query, res) => {
-  try {
-    const text = "SELECT * FROM Tabla_UbicacionesAtrac WHERE FK_AtraccionAtrac = $1";
-    const value = [query.fkoptions];
-    const result = await connection.query(text, value);
-
-    if (result.rows.length === 0) {
-      return res.status(404).json({ message: "Atraccion no encontrado" });
-    }
-    // console.log(result);
-    return res.status(200).json(result);
-  } catch (error) {
-    return res.status(500).json({ message: error.message });
-  }
-};
-
 const updateAtrac = async (query, res, body) => {
   try {
     const {
-      fk_atraccion_a,
+      discapacidad_a,
       latitude_a,
       longitude_a,
       name_a,
@@ -60,10 +44,10 @@ const updateAtrac = async (query, res, body) => {
       img_a,
     } = body;
     const text =
-      "UPDATE Tabla_UbicacionesAtrac SET FK_AtraccionAtrac = $1, Latitud_Ubicacion  = $2, Longitud_Ubicacion = $3, Nombre_Ubicacion = $4, Descripcion_Ubicacion = $5, Direccion_Ubicacion = $6, PaginaWeb_Ubicacion = $7, Imagen_Ubicacion = $8  WHERE ID_UbicacionAtrac = $9 RETURNING *";
+      "UPDATE Tabla_UbicacionesAtrac SET fk_discapacidadatrac = $1, Latitud_Ubicacion  = $2, Longitud_Ubicacion = $3, Nombre_Ubicacion = $4, Descripcion_Ubicacion = $5, Direccion_Ubicacion = $6, PaginaWeb_Ubicacion = $7, Imagen_Ubicacion = $8  WHERE ID_UbicacionAtrac = $9 RETURNING *";
 
     const values = [
-      fk_atraccion_a,
+      discapacidad_a,
       latitude_a,
       longitude_a,
       name_a,

@@ -19,14 +19,14 @@ const IndexA = () => {
     }
   };
 
-  const loadHotel = async () => {
+  const loadAtractions = async () => {
     const response = await fetch("http://iexperience.devsmex.com/api/atractions");
     const {rows: atraction} = await response.json();
     setAtracc(atraction);
   };
   
   useEffect(() => {
-    loadHotel();
+    loadAtractions();
   }, []);
 
   return (
