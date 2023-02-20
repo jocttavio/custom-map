@@ -14,8 +14,8 @@ import { useRouter } from "next/router";
 
 const NewAtracc = () => {
   const router = useRouter();
-  const Options = ['Natural', 'Artificial', ''];
-
+  const Options = ['', 'Artificial', 'Natural'];
+	
   const [atraction, setAtracc] = useState({
     fk_atraccion_a: 2,
     id_atrac: "",
@@ -59,8 +59,8 @@ const NewAtracc = () => {
         await updateHotel(router.query.id, atraction);
       } else {
         await createHotel(atraction);
+       }
         router.push("/crud/atractions");
-      }
     } catch (error) {
       console.log(error);
     }
@@ -207,7 +207,7 @@ const NewAtracc = () => {
                   longitude_a: atraction.longitude_a,
                 }]
               } TypeMap={3}
-                TypeIcon={atraction.fk_atraccion_a+3} />
+                TypeIcon={atraction.fk_atraccion_a} />
             )}
           </div>
 

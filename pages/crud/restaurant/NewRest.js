@@ -59,8 +59,8 @@ const NewRest = () => {
         await updateRest(router.query.id, restaurant);
       } else {
         await createRest(restaurant);
+}
         router.push("/crud/restaurant");
-      }
     } catch (error) {
       console.log(error);
     }
@@ -196,7 +196,6 @@ const NewRest = () => {
               </div>
             </form>
           </div>
-      
           <div>
             {router.query.id && (
               <Map locations={
