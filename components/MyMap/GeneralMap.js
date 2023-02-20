@@ -262,7 +262,7 @@ export default function GeneralMap({ TypeMap }) {
 
       setOptions(DisabilityOptions);
       setType_Map(TypeMap);
-      
+
     } else {
       setOptions([""]);
       setType_Map("");
@@ -389,7 +389,7 @@ export default function GeneralMap({ TypeMap }) {
 
       {ShowInformation && (
         <div className={style.ContentInformation}>
-          <div className="relative xl:w-[790px] lg:w-[630px] md:w-[590px] sm:w-[560px] w-[470px] xl:h-[590px] lg:h-[590px] md:h-[600px] sm:h-[610px] h-[620px] bg-[#f7f1e3] rounded-2xl shadow-2xl overflow-auto">
+          <div className="relative xl:w-[790px] lg:w-[630px] md:w-[590px] sm:w-[560px] w-[470px] xl:h-[590px] lg:h-[590px] md:h-[620px] sm:h-[640px] h-[660px] bg-[#f7f1e3] rounded-2xl shadow-2xl overflow-auto">
 
             <div className="absolute top-0 right-0">
               <IconButton variant="contained" size="large" color="error" onClick={() => setShowInformation(false)}>
@@ -410,9 +410,11 @@ export default function GeneralMap({ TypeMap }) {
                 <IconButton variant="contained" size="large" color="inherit">
                   <WebIcon />
                 </IconButton>
-                <a href={CardInfomation.paginaweb_ubicacion} target='_blank' rel="noopener noreferrer">
-                  {CardInfomation.paginaweb_ubicacion}
-                </a>
+                <div className="truncate">
+                  <a href={CardInfomation.paginaweb_ubicacion} target='_blank' rel="noopener noreferrer">
+                    {CardInfomation.paginaweb_ubicacion}
+                  </a>
+                </div>
               </div>
 
               <div className="flex flex-row justify-start items-center font-semibold mx-3">
