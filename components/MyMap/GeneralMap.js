@@ -153,7 +153,7 @@ export default function GeneralMap({ TypeMap }) {
   };
 
   const loadHotel = async (fk) => {
-    const response = await fetch("http://iexperience.devsmex.com/api/hotels", {
+    const response = await fetch("https://iexperience.devsmex.com/api/hotels", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -167,7 +167,7 @@ export default function GeneralMap({ TypeMap }) {
   };
 
   const loadRestaurant = async (fk) => {
-    const response = await fetch("http://iexperience.devsmex.com/api/restaurant", {
+    const response = await fetch("https://iexperience.devsmex.com/api/restaurant", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -181,7 +181,7 @@ export default function GeneralMap({ TypeMap }) {
   };
 
   const loadAtraction = async (fk) => {
-    const response = await fetch("http://iexperience.devsmex.com/api/atractions", {
+    const response = await fetch("https://iexperience.devsmex.com/api/atractions", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

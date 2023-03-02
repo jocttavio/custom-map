@@ -33,7 +33,7 @@ const NewRest = () => {
   };
 
   const createRest = async (restaurant) => {
-    await fetch("http://iexperience.devsmex.com/api/restaurant", {
+    await fetch("https://iexperience.devsmex.com/api/restaurant", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +43,7 @@ const NewRest = () => {
   };
 
   const updateRest = async (id, restaurant) => {
-    await fetch("http://iexperience.devsmex.com/api/restaurant/" + id, {
+    await fetch("https://iexperience.devsmex.com/api/restaurant/" + id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -67,7 +67,7 @@ const NewRest = () => {
   };
 
   const loadRest = async (id) => {
-    const response = await fetch("http://iexperience.devsmex.com/api/restaurant/" + id);
+    const response = await fetch("https://iexperience.devsmex.com/api/restaurant/" + id);
     const restaurant = await response.json( );
     setRestaurant({
       fk_discapacidad_r: restaurant.fk_discapacidadrest,

@@ -33,7 +33,7 @@ const NewAtracc = () => {
   };
 
   const createHotel = async (atraction) => {
-    await fetch("http://iexperience.devsmex.com/api/atractions", {
+    await fetch("https://iexperience.devsmex.com/api/atractions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +43,7 @@ const NewAtracc = () => {
   };
 
   const updateHotel = async (id, atraction) => {
-    await fetch("http://iexperience.devsmex.com/api/atractions/" + id, {
+    await fetch("https://iexperience.devsmex.com/api/atractions/" + id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -67,7 +67,7 @@ const NewAtracc = () => {
   };
 
   const loadHotel = async (id) => {
-    const response = await fetch("http://iexperience.devsmex.com/api/atractions/" + id);
+    const response = await fetch("https://iexperience.devsmex.com/api/atractions/" + id);
     const atraction = await response.json();
     setAtracc({
       discapacidad_a: atraction.fk_discapacidadatrac,
