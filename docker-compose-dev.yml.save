@@ -9,7 +9,8 @@ services:
     image: docker-nextjs-map
     build: .
     ports:
-      - "4000:4000"
+      - "3000:3
+000"
     volumes:
       - ./pages:/usr/app/pages
     networks:
