@@ -57,8 +57,7 @@ export default function Home() {
               <div className="flex justify-center">
                 <img
                   className="xl:w-full w-10/12 mt-6 bg-contain bg-center border-none bg-no-repeat"
-                  src="/silla-ruedas.png"
-                ></img>
+                  src="/silla-ruedas.png" alt="persona en silla de ruedas"></img>
               </div>
               <div className="xl:mt-16 mt-10">
                 <h1 className="title_text text-center text-emerald-700 xl:text-7xl text-5xl ">
@@ -76,7 +75,7 @@ export default function Home() {
                     experiencia, porque..
                   </p>
                   <b className="text-center text_logo font-thin text-3xl">
-                    "Todos tenemos derecho de viajar, conocer y disfrutar"
+                    &quot;Todos tenemos derecho de viajar, conocer y disfrutar&quot;
                   </b>
                 </div>
                 <div className="flex xl:justify-end  justify-start p-6">
@@ -84,7 +83,7 @@ export default function Home() {
                     <img
                       src="/sinfonia.jpg"
                       className="xl:w-[550px] w-72 rounded-2xl"
-                      alt=""
+                      alt="sinfonia de acapulco"
                     />
                   </div>
                 </div>
@@ -100,7 +99,7 @@ export default function Home() {
                   <img
                     src="/fuerte-san-diego.jpg"
                     className="w-[250px] rounded-2xl"
-                    alt=""
+                    alt="fuerte de san diego de acapulco"
                   />
                 </div>
               </div>
@@ -118,7 +117,7 @@ export default function Home() {
                   <img
                     src="/fuerte-san-diego.jpg"
                     className="xl:h-[300px] h-0 xl:w-[560px] w-0 rounded-2xl"
-                    alt=""
+                    alt="fuerte de san diego de acapulco"
                   />
                   <div className="xl:ml-96 xl:text-3xl">
                     <p>
@@ -145,7 +144,7 @@ export default function Home() {
                 <div className="flex justify-center items-center xl:h-full">
                   <img
                     className="xl:h-auto xl:w-[1400px] h-0 bg-contain bg-center border-none bg-no-repeat"
-                    src="/disability-rafiki.png"
+                    src="/disability-rafiki.png" alt="imagen de persona con discapacidad"
                   ></img>
                 </div>
               </div>
@@ -166,14 +165,14 @@ export default function Home() {
                 <div className="flex justify-center  xl:h-0">
                   <img
                     className="w-48 bg-contain bg-center border-none bg-no-repeat"
-                    src="/disability-rafiki.png"
+                    src="/disability-rafiki.png" alt="imagen de persona con discapacidad"
                   ></img>
                 </div>
                 <div className="flex xl:justify-end xl:h-[500px] mt-36 justify-start items-center xl:p- p-10">
                   <div>
                     <img
                       src="/punta-diamante.webp"
-                      className="xl:w-[450px] w-80 rounded-2xl"
+                      className="xl:w-[450px] w-80 rounded-2xl" alt="Punta diamante de acapulco"
                     />
                   </div>
                 </div>
@@ -190,7 +189,7 @@ export default function Home() {
                     <img
                       src="/quebrada.jpg"
                       className="xl:w-[510px] xl:mb-10 w-80 rounded-2xl"
-                      alt=""
+                      alt="La quebrada de Acapulco"
                     />
                   </div>
                 </div>
@@ -219,7 +218,7 @@ export default function Home() {
                 <img
                   className="xl:w-[700px] xl:h-auto h-0 bg-contain bg-center bg-no-repeat"
                   src="/disability-amico.png"
-                  alt=""
+                  alt="imagen de persona discapacitada"
                 ></img>
               </div>
             </div>
