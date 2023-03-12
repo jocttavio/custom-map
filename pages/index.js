@@ -24,7 +24,7 @@ export default function Home() {
           <div className="xl:col-span-2 grid  w-full">
             {/* Section 1 */}
             <div
-              className="flex flex-col xl:bg-contain bg-no-repeat bg-cover  items-center xl:p-4 justify-center h-auto  xl:text-7xl md:text-7xl text-3xl  xl:bg-[url('/section1-e.png')] bg-[url('/fondo-celular.jpg')]"
+              className="flex flex-col xl:bg-contain bg-no-repeat bg-cover  items-center xl:p-4 justify-center h-auto xl:text-7xl md:text-7xl text-3xl  xl:bg-[url('/section1-e.png')] bg-[url('/fondo-celular.jpg')]"
               // style={{ backgroundImage: "url(/)" }}
             >
               <div
@@ -115,11 +115,11 @@ export default function Home() {
                   ¿Cómo surgió I Experience?
                 </h1>
                 <div className="flex items-center text-justify p-4 xl:text-2xl text-black">
-                      <img
-                        src="/fuerte-san-diego.jpg"
-                        className="xl:h-[300px] h-0 xl:w-[560px] w-0 rounded-2xl"
-                        alt=""
-                      />
+                  <img
+                    src="/fuerte-san-diego.jpg"
+                    className="xl:h-[300px] h-0 xl:w-[560px] w-0 rounded-2xl"
+                    alt=""
+                  />
                   <div className="xl:ml-96 xl:text-3xl">
                     <p>
                       Desafortunadamente Acapulco es un puerto turístico que
@@ -201,10 +201,10 @@ export default function Home() {
                     alt=""
                   ></img>
                 </div>
-                <h1 className="title_text text-center text-emerald-700 xl:text-7xl text-5xl ">
-                  Objetivo
-                </h1>
-                <div className="text-justify p-4 text-black xl:text-3xl">
+                <div className=" flex flex-col items-center justify-center text-justify p-4 text-black xl:text-3xl h-[400px]">
+                  <h1 className="title_text text-center text-emerald-700 xl:text-7xl text-5xl ">
+                    Objetivo
+                  </h1>
                   <p>
                     Busca que las personas con capacidades diferentes se salten
                     el caótico paso de investigar con que facilidades de acceso
