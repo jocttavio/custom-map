@@ -23,10 +23,9 @@ export default function GeneralMap({ TypeMap }) {
   const router = useRouter();
   const IconArray = [
     "/marcador_motora.png",
-    "marcador_visual.png",
     "/marcador_auditivo.png",
   ];
-  const DisabilityOptions = ["Discapacidad motora", "Discapacidad auditiva"];
+  const DisabilityOptions = ["Discapacidad motora","Discapacidad auditiva"];
   const AttractionOptions = ["Naturales", "Artificiales"];
 
   const [Type_Map, setType_Map] = useState("");
@@ -284,6 +283,10 @@ export default function GeneralMap({ TypeMap }) {
 
   return (
     <div className="relative w-full h-[100vh]">
+       <Head>
+        <title>Iexperience</title>
+        <meta name="description" content="Mapa para discapacitados en Acapulco" />
+      </Head>
       <div className="absolute top-2 left-14 xl:right-96 lg:right-80 md:right-10 sm:right-4 right-2 flex xl:flex-row lg:flex-row md:flex-row sm:flex-row flex-col xl:justify-start justify-center items-center gap-x-2 gap-y-2 z-[1200]  bg-[#E4DCAB] rounded-lg p-3">
         <div className="flex flex-wrap flex-row justify-center items-center gap-y-1 gap-x-2">
           <div className="">
@@ -465,7 +468,7 @@ export default function GeneralMap({ TypeMap }) {
                   <Button
                     variant="contained"
                     size="small"
-                    endIcon={<RestaurantIcon />}
+                    endIcon={<WebIcon />}
                   >
                     <a
                       href={CardInfomation.paginaweb_ubicacion}
