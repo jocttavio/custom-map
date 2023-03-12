@@ -1,8 +1,6 @@
 import classes from "../../styles/header.module.css";
-import SearchIcon from "@mui/icons-material/Search";
-import { IconButton } from "@mui/material";
+
 import { useRouter } from "next/router";
-import Image from "next/image";
 
 const Navbar = () => {
   const router = useRouter();
@@ -43,7 +41,7 @@ const Navbar = () => {
           />
           </div> */}
           <div>
-          <h1 className="text_logo font-normal text-4xl text-white tracking-wide">I Experience</h1>
+          <h1 className="text_logo font-normal text-4xl text-white tracking-wide p-4">I Experience</h1>
           </div>
         </div>
 
