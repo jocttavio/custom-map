@@ -14,58 +14,224 @@ export default function Home() {
       <Navbar />
 
       <div
-        className="xl:h-screen h-auto bg-no-repeat bg-cover  bg-top "
-        style={{
-          backgroundImage:
-            "url(https://cdn.pixabay.com/photo/2016/11/04/10/12/hospice-1797305_960_720.jpg)",
-        }}
+        className="h-auto bg-no-repeat bg-cover  bg-top "
+        // style={{
+        //   backgroundImage:
+        //     "url(https://cdn.pixabay.com/photo/2016/11/04/10/12/hospice-1797305_960_720.jpg)",
+        // }}
       >
-        <div className=" grid xl:grid-cols-3 grid-cols-1 h-full backdrop-opacity-10 bg-black/30">
-          <div className="xl:col-span-2 grid grid-rows-2   ">
-            <div className="flex xl:flex-col xl:items-start  items-center p-4 justify-center xl:h-auto  xl:text-7xl md:text-7xl text-3xl ">
+        <div className=" grid grid-cols-1 h-full w-full">
+          <div className="xl:col-span-2 grid  w-full">
+            {/* Section 1 */}
+            <div
+              className="flex flex-col xl:bg-contain bg-no-repeat bg-cover  items-center xl:p-4 justify-center h-auto  xl:text-7xl md:text-7xl text-3xl  xl:bg-[url('/section1-e.png')] bg-[url('/fondo-celular.jpg')]"
+              // style={{ backgroundImage: "url(/)" }}
+            >
+              <div
+                className="w-full bg-center h-96 bg-contain bg-no-repeat"
+                style={{
+                  backgroundImage:
+                    "url(/day-of-people-with-disability-animate.svg)",
+                }}
+              ></div>
               <div>
-              <h1 className="title_text  text-white ">
-                BIENVENIDOS A
-              </h1>
-              <h1 className="title_text  text-white tracking-wide underline decoration-pink-500">
-                I EXPERIENCE
-              </h1> 
-              </div>
-              <div className="xl:opacity-0 md:opacity-0 opacity-100">
-              <Image
-              src="/logo.png"
-              alt="Picture of logo i experience"
-              width={80}
-              height={80}
-            />
+                <h1 className="title_text text-black text-4xl ">
+                  BIENVENIDOS A
+                </h1>
+                <br />
+                <div
+                  className="bg-contain bg-no-repeat h-32 w-full "
+                  style={{ backgroundImage: "url(/i-experience.png)" }}
+                ></div>
+                <div
+                  className="bg-contain bg-center w-full xl:h-72 h-48 bg-no-repeat"
+                  style={{ backgroundImage: "url(/logo.png)" }}
+                ></div>
               </div>
             </div>
+            {/* section2 */}
+            <div
+              className="flex xl:flex-row flex-col information_text xl:text-xl md:text-xl text-base h-auto xl:p-10 p-2 text-justify xl:items-center text-white xl:bg-[url('/section2-e.png')] bg-[url('/section2.png')] tracking-wider bg-cover bg-no-repeat w-auto"
+              // style={{ backgroundImage: "url(/section2.png)" }}
+            >
+              <div className="flex justify-center">
+                <img
+                  className="xl:w-full w-10/12 mt-6 bg-contain bg-center border-none bg-no-repeat"
+                  src="/silla-ruedas.png"
+                ></img>
+              </div>
+              <div className="xl:mt-16 mt-10">
+                <h1 className="title_text text-center text-emerald-700 xl:text-7xl text-5xl ">
+                  ¿Quiénes somos?
+                </h1>
+                <div className="text-justify xl:text-3xl p-4 text-black">
+                  <p>
+                    En la necesidad de fomentar la igualdad de oportunidades
+                    para poder viajar de una manera cómoda, autónoma y segura,
+                    se ha creado I Experience. <br /> Es un sitio web el cual
+                    busca proporcionar la búsqueda de hoteles, restaurantes y
+                    atracciones que sean incluyentes. De esta manera las
+                    personas con capacidades diferentes pueden encontrar lo
+                    mejor para su viaje además de poder crear una nueva
+                    experiencia, porque..
+                  </p>
+                  <b className="text-center text_logo font-thin text-3xl">
+                    "Todos tenemos derecho de viajar, conocer y disfrutar"
+                  </b>
+                </div>
+                <div className="flex xl:justify-end  justify-start p-6">
+                  <div>
+                    <img
+                      src="/sinfonia.jpg"
+                      className="xl:w-[550px] w-72 rounded-2xl"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* section 3 */}
+            <div
+              className="flex flex-col information_text xl:text-xl md:text-xl text-base h-auto xl:p-10 p-2 text-justify text-white tracking-wider xl:bg-[url('/section3-e.png')] bg-[url('/section3.png')]  bg-no-repeat bg-cover"
+              // style={{ backgroundImage: "url(/section3.png)" }}
+            >
+              <div className="flex justify-end items-center p-4 xl:bg-opacity-0 bg-opacity-100 xl:h-0 xl:w-0">
+                <div>
+                  <img
+                    src="/fuerte-san-diego.jpg"
+                    className="w-[250px] rounded-2xl"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div className="flex justify-center">
+                <img
+                  className="xl:w-[800px] w-10/12 mt-6 bg-contain bg-center border-none bg-no-repeat"
+                  src="/disability-pana.png"
+                ></img>
+              </div>
+              <div>
+                <h1 className="title_text text-center text-emerald-700 xl:text-7xl text-5xl ">
+                  ¿Cómo surgió I Experience?
+                </h1>
+                <div className="flex items-center text-justify p-4 xl:text-2xl text-black">
+                      <img
+                        src="/fuerte-san-diego.jpg"
+                        className="xl:h-[300px] h-0 xl:w-[560px] w-0 rounded-2xl"
+                        alt=""
+                      />
+                  <div className="xl:ml-96 xl:text-3xl">
+                    <p>
+                      Desafortunadamente Acapulco es un puerto turístico que
+                      promete ser inclusivo mas no es incluyente, debido a que
+                      sus infraestructuras no están al 100% adaptadas para
+                      recibirlos. Sin embargo, para fomentar la inclusión en el
+                      sector turístico y darles la oportunidad de viajar de una
+                      manera segura, autónoma y cómoda; es donde surge la
+                      alternativa de I Experience la cual está enfocada en
+                      facilitar información de hoteles, restaurantes y
+                      atracciones las cuales se acoplen mejor a sus necesidades.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Section 4 */}
+            <div
+              className="flex xl:flex-row flex-col information_text xl:text-xl md:text-xl text-base h-auto xl:p-10 p-2 text-justify text-white tracking-wider xl:bg-[url('/section4-e.png')] bg-[url('/section4.png')]  bg-no-repeat bg-cover "
+              // style={{ backgroundImage: "url(/section4.png)" }}
+            >
+              <div>
+                <div className="flex justify-center items-center xl:h-full">
+                  <img
+                    className="xl:h-auto xl:w-[1400px] h-0 bg-contain bg-center border-none bg-no-repeat"
+                    src="/disability-rafiki.png"
+                  ></img>
+                </div>
+              </div>
+              <div className="ml-4 mt-12">
+                <h1 className="title_text text-center text-emerald-700 xl:text-7xl text-5xl ">
+                  ¿Qué ofrecemos?
+                </h1>
+                <div className="xl:text-3xl xl:ml-24 text-justify p-4 text-black">
+                  <p>
+                    Este sitio web ofrece información detallada de las
+                    facilidades de acceso con las que cuenta el establecimiento,
+                    así como su localización y una breve información general,
+                    además de que cuenta con un filtro dependiendo de la
+                    discapacidad de la que se trate, para hacer su búsqueda más
+                    audaz.
+                  </p>
+                </div>
+                <div className="flex justify-center  xl:h-0">
+                  <img
+                    className="w-48 bg-contain bg-center border-none bg-no-repeat"
+                    src="/disability-rafiki.png"
+                  ></img>
+                </div>
+                <div className="flex xl:justify-end xl:h-[500px] mt-36 justify-start items-center xl:p- p-10">
+                  <div>
+                    <img
+                      src="/punta-diamante.webp"
+                      className="xl:w-[450px] w-80 rounded-2xl"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Section 5 */}
+            <div
+              className="flex flex-col xl:flex-row information_text xl:text-xl md:text-xl text-base h-auto xl:p-4 p-2 text-justify text-white tracking-wider xl:bg-[url('/section5-e.png')] bg-[url('/section5.png')] bg-no-repeat bg-cover"
+              // style={{ backgroundImage: "url(/)" }}
+            >
+              <div className="xl:w-[700px] h-auto">
+                <div className="mt-10 flex justify-center items-center p-4">
+                  <div>
+                    <img
+                      src="/quebrada.jpg"
+                      className="xl:w-[510px] xl:mb-10 w-80 rounded-2xl"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="flex justify-center items-center ">
+                  <img
+                    className="w-[400px] h-auto xl:h-0 bg-contain bg-center bg-no-repeat"
+                    src="/disability-amico.png"
+                    alt=""
+                  ></img>
+                </div>
+                <h1 className="title_text text-center text-emerald-700 xl:text-7xl text-5xl ">
+                  Objetivo
+                </h1>
+                <div className="text-justify p-4 text-black xl:text-3xl">
+                  <p>
+                    Busca que las personas con capacidades diferentes se salten
+                    el caótico paso de investigar con que facilidades de acceso
+                    cuenta cada empresa, ya que nosotros les proporcionamos
+                    opciones variadas de lugares que pueden visitar, tratando de
+                    mejorar su experiencia vacacional.
+                  </p>
+                </div>
+              </div>
 
-            <div className="flex flex-col information_text xl:text-xl md:text-xl text-base h-auto xl:p-4 p-2 text-justify text-white tracking-wider ">
-              <p>
-                En la necesidad de fomentar la igualdad de oportunidades para
-                poder viajar de una manera cómoda, autónoma y segura, se ha
-                creado I Experience. <br /> Es un sitio web el cual busca
-                proporcionar la búsqueda de hoteles, restaurantes y atracciones
-                que sean incluyentes. De esta manera las personas con
-                capacidades diferentes pueden encontrar lo mejor para su viaje
-                además de poder crear una nueva experiencia, porque..
-              </p>
-              <p>
-                <b className="font-extrabold text-2xl">
-                  Todos tenemos derecho de viajar, conocer y disfrutar
-                </b>
-              </p>
+              <div className="flex justify-center items-center">
+                <img
+                  className="xl:w-[700px] xl:h-auto h-0 bg-contain bg-center bg-no-repeat"
+                  src="/disability-amico.png"
+                  alt=""
+                ></img>
+              </div>
             </div>
           </div>
-          <div className="flex justify-center items-center xl:opacity-100 md:opacity-100 opacity-0">
+          {/* <div className="flex justify-center items-center xl:opacity-100 md:opacity-100 h-0 opacity-0">
             <Image
               src="/logo.png"
               alt="Picture of the author"
               width={300}
               height={150}
             />
-          </div>
+          </div> */}
         </div>
       </div>
       <Footer />
